@@ -34,6 +34,27 @@ export default function App() {
         <p className="trust">
           Instant access • No experience needed
         </p>
+
+        {/* PNG BANNER */}
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
+          <a
+            href="https://leadsleap.com/?r=theojm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/leadsleap-banner.png"
+              alt="LeadsLeap"
+              style={{
+                maxWidth: "468px",
+                width: "100%",
+                display: "block",
+                margin: "0 auto"
+              }}
+            />
+          </a>
+        </div>
+
       </div>
     </div>
   );
