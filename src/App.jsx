@@ -41,13 +41,19 @@ export default function App() {
             href="https://leadsleap.com/?r=theojm"
             target="_blank"
             rel="noopener noreferrer"
+            style={{ display: "inline-block" }}
           >
             <img
               src="/leadsleap-banner.gif"
               alt="LeadsLeap Ad"
               style={{
-                maxWidth: "468px",
-                width: "100%"
+                display: "block",
+                width: "468px",
+                maxWidth: "100%",
+                height: "auto",
+                margin: "0 auto",
+                opacity: 1,
+                visibility: "visible"
               }}
             />
           </a>
