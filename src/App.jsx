@@ -4,7 +4,17 @@ export default function App() {
   const params = new URLSearchParams(window.location.search);
   const src = params.get("src") || "direct";
 
-  localStorage.setItem("funnel_src", src);
+  import { useEffect } from "react";
+
+export default function App() {
+  // get src from URL
+  const params = new URLSearchParams(window.location.search);
+  const src = params.get("src") || "direct";
+
+  // store it so thank you page + tracking can reuse it
+  useEffect(() => {
+    localStorage.setItem("funnel_src", src);
+  }, [src]);
 
   return (
     <div className="landing-page">
@@ -19,7 +29,9 @@ export default function App() {
           No building. No guessing. Just plug in and go.
         </p>
 
-        <div className="bonus">🎁 Free Bonus Included</div>
+        <div className="bonus">
+          🎁 Free Bonus Included
+        </div>
 
         <a
           className="cta"
@@ -28,24 +40,24 @@ export default function App() {
           Get Instant Access
         </a>
 
-        <p className="trust">Instant access • No experience needed</p>
+        <p className="trust">
+          Instant access • No experience needed
+        </p>
 
+        {/* ✅ SAFE BANNER ADDED BELOW */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href="https://leadsleap.com/?r=theojm"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ display: "inline-block" }}
           >
             <img
-              src="/promo-strip.gif"
-              alt="Promo"
+              src="/leadsleap-banner.gif"
+              alt="LeadsLeap Ad"
               style={{
-                display: "block",
-                width: "468px",
-                maxWidth: "100%",
-                height: "auto",
-                margin: "0 auto"
+                maxWidth: "468px",
+                width: "100%",
+                borderRadius: "10px"
               }}
             />
           </a>
