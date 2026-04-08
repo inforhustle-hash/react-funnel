@@ -34,12 +34,13 @@ export default function App() {
           Get Instant Access
         </a>
 
-        <p className="trust">
+        {/* push space under button */}
+        <p className="trust" style={{ marginBottom: "40px" }}>
           Instant access • No experience needed
         </p>
 
-        {/* BANNER WITH HOVER EFFECT */}
-        <div style={{ marginTop: "30px", textAlign: "center" }}>
+        {/* BANNER LOWER + HOVER */}
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href="https://leadsleap.com/?r=theojm"
             target="_blank"
