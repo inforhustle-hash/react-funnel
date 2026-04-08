@@ -1,14 +1,11 @@
-import { useEffect } from "react";
+import "./App.css";
 
 export default function App() {
-  // get src from URL
   const params = new URLSearchParams(window.location.search);
   const src = params.get("src") || "direct";
 
   // store it so thank you page + tracking can reuse it
-  useEffect(() => {
-    localStorage.setItem("funnel_src", src);
-  }, [src]);
+  localStorage.setItem("funnel_src", src);
 
   return (
     <div className="landing-page">
@@ -38,7 +35,7 @@ export default function App() {
           Instant access • No experience needed
         </p>
 
-        {/* ✅ FIXED GIF (your exact filename) */}
+        {/* ✅ ONLY ADDITION (GIF) */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href="https://leadsleap.com/?r=theojm"
@@ -50,12 +47,12 @@ export default function App() {
               alt="LeadsLeap Ad"
               style={{
                 maxWidth: "468px",
-                width: "100%",
-                borderRadius: "10px"
+                width: "100%"
               }}
             />
           </a>
         </div>
+
       </div>
     </div>
   );
