@@ -35,7 +35,7 @@ export default function App() {
           Instant access • No experience needed
         </p>
 
-        {/* ✅ ONLY ADDITION (GIF) */}
+        {/* GIF BANNER */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href="https://leadsleap.com/?r=theojm"
@@ -43,7 +43,7 @@ export default function App() {
             rel="noopener noreferrer"
           >
             <img
-              <img src="/leadsleap-banner.gif" />
+              src="/leadsleap-banner.gif"
               alt="LeadsLeap Ad"
               style={{
                 maxWidth: "468px",
