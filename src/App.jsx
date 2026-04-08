@@ -35,7 +35,7 @@ export default function App() {
           Instant access • No experience needed
         </p>
 
-        {/* PNG BANNER */}
+        {/* EXTERNAL PNG BANNER */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href="https://leadsleap.com/?r=theojm"
@@ -43,7 +43,7 @@ export default function App() {
             rel="noopener noreferrer"
           >
             <img
-              src="/leadsleap-banner.png"
+              src="https://imgallery.llsvr.com/theojm.69d5cbe0d1953.png"
               alt="LeadsLeap"
               style={{
                 maxWidth: "468px",
