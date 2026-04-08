@@ -43,7 +43,7 @@ export default function App() {
             rel="noopener noreferrer"
           >
             <img
-              src="/b468.60.hd.gif"
+              <img src="/leadsleap-banner.gif" />
               alt="LeadsLeap Ad"
               style={{
                 maxWidth: "468px",
