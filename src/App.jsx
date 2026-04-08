@@ -38,7 +38,7 @@ export default function App() {
           Instant access • No experience needed
         </p>
 
-        {/* ✅ SAFE BANNER ADDED BELOW */}
+        {/* ✅ FIXED GIF (your exact filename) */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href="https://leadsleap.com/?r=theojm"
@@ -46,7 +46,7 @@ export default function App() {
             rel="noopener noreferrer"
           >
             <img
-              src="/leadsleap-banner.gif"
+              src="/b468.60.hd.gif"
               alt="LeadsLeap Ad"
               style={{
                 maxWidth: "468px",
