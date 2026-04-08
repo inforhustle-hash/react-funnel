@@ -98,7 +98,7 @@ const products = [
 ];
 
 const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
-const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
+const leadsLeapBanner = "/leadsleap-banner.gif";
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -197,7 +197,7 @@ export default function Home() {
 
       window.location.href = selectedProduct.url;
     } catch (error) {
-      setLeadMessage("Lead capture saved failed. Please try again.");
+      setLeadMessage("Lead capture failed. Please try again.");
       console.error(error);
     } finally {
       setSavingLead(false);
@@ -206,14 +206,11 @@ export default function Home() {
 
   return (
     <>
-     
-</div> 
+      <h1 style={{ color: "red", fontSize: "48px", textAlign: "center" }}>
+        TEST HOME PAGE
+      </h1>
 
-<h1 style={{ color: "red", fontSize: "48px", textAlign: "center" }}>
-  TEST HOME PAGE
-</h1>
-
-<main className="page-wrap" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
+      <main className="page-wrap" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
         <section
           className="glass-card"
           style={{
@@ -335,6 +332,7 @@ export default function Home() {
                   width: "100%",
                   maxWidth: "468px",
                   height: "auto",
+                  display: "block",
                   borderRadius: "12px",
                   border: "1px solid rgba(77,226,255,0.18)",
                   boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
