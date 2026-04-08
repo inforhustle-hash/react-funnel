@@ -4,7 +4,6 @@ export default function App() {
   const params = new URLSearchParams(window.location.search);
   const src = params.get("src") || "direct";
 
-  // store it so thank you page + tracking can reuse it
   localStorage.setItem("funnel_src", src);
 
   return (
@@ -20,9 +19,7 @@ export default function App() {
           No building. No guessing. Just plug in and go.
         </p>
 
-        <div className="bonus">
-          🎁 Free Bonus Included
-        </div>
+        <div className="bonus">🎁 Free Bonus Included</div>
 
         <a
           className="cta"
@@ -31,11 +28,8 @@ export default function App() {
           Get Instant Access
         </a>
 
-        <p className="trust">
-          Instant access • No experience needed
-        </p>
+        <p className="trust">Instant access • No experience needed</p>
 
-        {/* GIF BANNER */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href="https://leadsleap.com/?r=theojm"
@@ -44,21 +38,18 @@ export default function App() {
             style={{ display: "inline-block" }}
           >
             <img
-              src="/leadsleap-banner.gif"
-              alt="LeadsLeap Ad"
+              src="/promo-strip.gif"
+              alt="Promo"
               style={{
                 display: "block",
                 width: "468px",
                 maxWidth: "100%",
                 height: "auto",
-                margin: "0 auto",
-                opacity: 1,
-                visibility: "visible"
+                margin: "0 auto"
               }}
             />
           </a>
         </div>
-
       </div>
     </div>
   );
