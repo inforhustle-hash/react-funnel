@@ -10,11 +10,21 @@ export default function App() {
   // store it so thank you page + tracking can reuse it
   localStorage.setItem("funnel_src", src);
 
-  const bannerTrackUrl =
-    `https://hooks.freebiebro.org/webhook/t` +
+  // ✅ MAIN CTA TRACKING (goes to capture page)
+  const ctaFinalUrl = `${window.location.origin}/capture.html?src=${encodeURIComponent(src)}`;
+  const ctaTrackUrl =
+    `https://n8n-production-01ac.up.railway.app/webhook/t` +
     `?src=${encodeURIComponent(src)}` +
-    `&offer=${encodeURIComponent("leadsleap")}` +
-    `&url=${encodeURIComponent("https://leadsleap.com/?r=theojm")}`;
+    `&offer=${encodeURIComponent("main-cta")}` +
+    `&url=${encodeURIComponent(ctaFinalUrl)}`;
+
+  // ✅ BANNER TRACKING (goes to LeadsLeap)
+  const bannerFinalUrl = "https://leadsleap.com/?r=theojm";
+  const bannerTrackUrl =
+    `https://n8n-production-01ac.up.railway.app/webhook/t` +
+    `?src=${encodeURIComponent(src)}` +
+    `&offer=${encodeURIComponent("leadsleap-banner")}` +
+    `&url=${encodeURIComponent(bannerFinalUrl)}`;
 
   return (
     <div className="landing-page">
@@ -33,10 +43,8 @@ export default function App() {
           🎁 Free Bonus Included
         </div>
 
-        <a
-          className="cta"
-          href={`/capture.html?src=${encodeURIComponent(src)}`}
-        >
+        {/* ✅ TRACKED CTA BUTTON */}
+        <a className="cta" href={ctaTrackUrl}>
           Get Instant Access
         </a>
 
@@ -44,6 +52,7 @@ export default function App() {
           Instant access • No experience needed
         </p>
 
+        {/* ✅ TRACKED BANNER */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href={bannerTrackUrl}
@@ -62,12 +71,15 @@ export default function App() {
                 margin: "0 auto",
                 transition: "transform 0.2s ease, box-shadow 0.2s ease",
                 transform: hover ? "scale(1.05)" : "scale(1)",
-                boxShadow: hover ? "0 10px 25px rgba(0,0,0,0.4)" : "none",
+                boxShadow: hover
+                  ? "0 10px 25px rgba(0,0,0,0.4)"
+                  : "none",
                 cursor: "pointer"
               }}
             />
           </a>
         </div>
+
       </div>
     </div>
   );
