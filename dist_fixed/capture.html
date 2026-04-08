@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Capture</title>
+</head>
+<body>
+  <h2>Capture Page</h2>
+  <form id="form">
+    <input name="name" placeholder="Name" required />
+    <input name="email" placeholder="Email" required />
+    <button type="submit">Submit</button>
+  </form>
+
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const data = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    src: new URLSearchParams(window.location.search).get("src") || "direct"
+  };
+
+  fetch("https://n8n-production-01ac.up.railway.app/webhook/lead-log", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  }).then(()=>{
+    window.location.href = "/thankyou.html";
+  });
+});
+</script>
+</body>
+</html>

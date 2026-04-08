@@ -194,7 +194,7 @@
       localStorage.setItem("pending_lead_log", JSON.stringify(leadData));
 
       const payload = JSON.stringify(leadData);
-      const webhookUrl = "https://hooks.freebiebro.org/webhook/lead-log";
+      const webhookUrl = "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
 
       try {
         if (navigator.sendBeacon) {

@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You</title>
+</head>
+<body>
+  <h2>Thank You</h2>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const src = params.get("src") || "direct";
+
+const link = "https://n8n-production-01ac.up.railway.app/webhook/t?src=" + encodeURIComponent(src) + "&offer=test&url=" + encodeURIComponent("https://example.com");
+
+window.location.href = link;
+</script>
+</body>
+</html>

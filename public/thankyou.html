@@ -229,7 +229,7 @@ h1 {
     const base = link.getAttribute("data-url");
     const encoded = encodeURIComponent(base);
 
-    link.href = `https://hooks.freebiebro.org/webhook/t?src=${encodeURIComponent(src)}&offer=${encodeURIComponent(offer)}&url=${encoded}`;
+    link.href = `https://n8n-production-01ac.up.railway.app/webhook/t?src=${encodeURIComponent(src)}&offer=${encodeURIComponent(offer)}&url=${encoded}`;
   });
 
   (async function logLeadSafely() {
@@ -239,7 +239,7 @@ h1 {
     try {
       const lead = JSON.parse(raw);
 
-      await fetch("https://hooks.freebiebro.org/webhook/lead-log", {
+      await fetch("https://n8n-production-01ac.up.railway.app/webhook/lead-log", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
