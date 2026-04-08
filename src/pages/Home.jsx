@@ -97,6 +97,9 @@ const products = [
   },
 ];
 
+const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
+const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
+
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -203,7 +206,14 @@ export default function Home() {
 
   return (
     <>
-      <main className="page-wrap" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
+     
+</div> 
+
+<h1 style={{ color: "red", fontSize: "48px", textAlign: "center" }}>
+  TEST HOME PAGE
+</h1>
+
+<main className="page-wrap" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
         <section
           className="glass-card"
           style={{
@@ -267,6 +277,72 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <RevealSection className="glass-card" delay={0.05}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "1rem",
+              flexWrap: "wrap",
+              padding: "0.25rem 0",
+            }}
+          >
+            <div>
+              <span className="section-kicker">Recommended Extra Income Tool</span>
+              <h3 style={{ margin: "0.35rem 0 0.35rem" }}>Advertise with LeadsLeap</h3>
+              <p className="muted-text" style={{ margin: 0, maxWidth: 700 }}>
+                Looking for another traffic and advertising option? Check out LeadsLeap and
+                use it alongside your funnel.
+              </p>
+            </div>
+
+            <a
+              href={leadsLeapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button-link"
+            >
+              Visit LeadsLeap
+            </a>
+          </div>
+        </RevealSection>
+
+        <RevealSection className="glass-card" delay={0.08}>
+          <div
+            style={{
+              display: "grid",
+              placeItems: "center",
+              padding: "0.5rem 0",
+            }}
+          >
+            <a
+              href={leadsLeapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+                maxWidth: "100%",
+              }}
+            >
+              <img
+                src={leadsLeapBanner}
+                alt="Advertise with LeadsLeap"
+                style={{
+                  width: "100%",
+                  maxWidth: "468px",
+                  height: "auto",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(77,226,255,0.18)",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+                }}
+              />
+            </a>
+          </div>
+        </RevealSection>
 
         <RevealSection className="glass-card section-block">
           <div
@@ -544,9 +620,7 @@ export default function Home() {
                 />
               </label>
 
-              {leadMessage && (
-                <div className="message-box">{leadMessage}</div>
-              )}
+              {leadMessage && <div className="message-box">{leadMessage}</div>}
 
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <button
