@@ -1,8 +1,11 @@
 import "./App.css";
+import { useState } from "react";
 
 export default function App() {
   const params = new URLSearchParams(window.location.search);
   const src = params.get("src") || "direct";
+
+  const [hover, setHover] = useState(false);
 
   // store it so thank you page + tracking can reuse it
   localStorage.setItem("funnel_src", src);
@@ -35,8 +38,8 @@ export default function App() {
           Instant access • No experience needed
         </p>
 
-        {/* EXTERNAL PNG BANNER */}
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
+        {/* BANNER WITH HOVER EFFECT */}
+        <div style={{ marginTop: "30px", textAlign: "center" }}>
           <a
             href="https://leadsleap.com/?r=theojm"
             target="_blank"
@@ -45,11 +48,19 @@ export default function App() {
             <img
               src="https://imgallery.llsvr.com/theojm.69d5cbe0d1953.png"
               alt="LeadsLeap"
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
               style={{
                 maxWidth: "468px",
                 width: "100%",
                 display: "block",
-                margin: "0 auto"
+                margin: "0 auto",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                transform: hover ? "scale(1.05)" : "scale(1)",
+                boxShadow: hover
+                  ? "0 10px 25px rgba(0,0,0,0.4)"
+                  : "none",
+                cursor: "pointer"
               }}
             />
           </a>
