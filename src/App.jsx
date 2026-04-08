@@ -10,6 +10,12 @@ export default function App() {
   // store it so thank you page + tracking can reuse it
   localStorage.setItem("funnel_src", src);
 
+  const bannerTrackUrl =
+    `https://hooks.freebiebro.org/webhook/t` +
+    `?src=${encodeURIComponent(src)}` +
+    `&offer=${encodeURIComponent("leadsleap")}` +
+    `&url=${encodeURIComponent("https://leadsleap.com/?r=theojm")}`;
+
   return (
     <div className="landing-page">
       <div className="landing-container">
@@ -34,15 +40,13 @@ export default function App() {
           Get Instant Access
         </a>
 
-        {/* push space under button */}
         <p className="trust" style={{ marginBottom: "40px" }}>
           Instant access • No experience needed
         </p>
 
-        {/* BANNER LOWER + HOVER */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
-            href="https://leadsleap.com/?r=theojm"
+            href={bannerTrackUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -58,15 +62,12 @@ export default function App() {
                 margin: "0 auto",
                 transition: "transform 0.2s ease, box-shadow 0.2s ease",
                 transform: hover ? "scale(1.05)" : "scale(1)",
-                boxShadow: hover
-                  ? "0 10px 25px rgba(0,0,0,0.4)"
-                  : "none",
+                boxShadow: hover ? "0 10px 25px rgba(0,0,0,0.4)" : "none",
                 cursor: "pointer"
               }}
             />
           </a>
         </div>
-
       </div>
     </div>
   );
