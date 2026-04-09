@@ -86,9 +86,10 @@ const products = [
   },
 ];
 
-<<<<<<< HEAD
+ HEAD
+ HEAD
 const trackingLink = (slug) => `https://go.freebiebro.org/?src=metallfya--irc.thrivecart.com/${slug}/`;
-=======
+
 const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
 <<<<<<< HEAD
 const leadsLeapBanner = "/leadsleap-banner.gif";
@@ -103,6 +104,16 @@ export default function RankableHomepage() {
     "Discover 10 powerful digital systems for affiliate marketing, SEO, email marketing, content, social media, video, and more. Start building online income with proven tools and strategies.";
   const canonicalUrl = "https://go.freebiebro.org/";
 
+
+const trackingLink = (slug) => `https://go.freebiebro.org/?src=metallfya--irc.thrivecart.com/${slug}/`;
+
+export default function RankableHomepage() {
+  const pageTitle = "10 Digital Systems to Make Money Online | FreebieBro";
+  const pageDescription =
+    "Discover 10 powerful digital systems for affiliate marketing, SEO, email marketing, content, social media, video, and more. Start building online income with proven tools and strategies.";
+  const canonicalUrl = "https://go.freebiebro.org/";
+
+>>>>>>> a8925ed (Fix Home.jsx conflict markers cleanly)
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -132,18 +143,22 @@ export default function RankableHomepage() {
         />
         <link rel="canonical" href={canonicalUrl} />
 
-<<<<<<< HEAD
+ HEAD
+ HEAD
+
+ a8925ed (Fix Home.jsx conflict markers cleanly)
         <meta property="og:type" content="website" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="FreebieBro" />
-=======
+ HEAD
+
       <main className="page-wrap" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
 
      
 </div> 
->>>>>>> bfb00ae (Fix Home.jsx merge markers)
+ bfb00ae (Fix Home.jsx merge markers)
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
@@ -152,6 +167,16 @@ export default function RankableHomepage() {
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
 
+
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      </Helmet>
+
+ a8925ed (Fix Home.jsx conflict markers cleanly)
       <div className="min-h-screen bg-slate-950 text-white">
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.14),transparent_30%)]" />
