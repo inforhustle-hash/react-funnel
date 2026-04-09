@@ -7,7 +7,7 @@ export default function App() {
 
  HEAD
   const [hover, setHover] = useState(false);
-=======
+
   import { useEffect } from "react";
 
 export default function App() {
@@ -108,8 +108,8 @@ export default function App() {
         </div>
  HEAD
 
-=======
->>>>>>> 8a608d6 (fix banner final)
+
+8a608d6 (fix banner final)
       </div>
     </div>
   );
