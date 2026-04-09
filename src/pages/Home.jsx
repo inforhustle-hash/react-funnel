@@ -1,663 +1,329 @@
-import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import RevealSection from "../components/RevealSection";
-import { db } from "../firebase";
+import React from "react";
+import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Mail, Search, Video, Share2, BadgeDollarSign, Image as ImageIcon, BookOpen, PenSquare } from "lucide-react";
 
 const products = [
   {
+    name: "Affiliate System",
     slug: "affiliate-system",
-    title: "Affiliate System",
-    image: "/products/affiliate-system.png",
-    url: "https://metallfya--irc.thrivecart.com/affiliate-system/",
-    badge: "Affiliate Marketing",
-    blurb:
-      "Launch affiliate campaigns faster with a system designed to simplify promotion, planning, and daily execution.",
+    icon: BadgeDollarSign,
+    description:
+      "Learn how to start affiliate marketing, promote digital products, and build online income with a simple beginner-friendly system.",
+    keywords: ["affiliate marketing for beginners", "make money online", "digital income system"],
   },
   {
+    name: "Content System",
     slug: "content-system",
-    title: "Content System",
-    image: "/products/content-system.png",
-    url: "https://metallfya--irc.thrivecart.com/content-system/",
-    badge: "Content Creation",
-    blurb:
-      "Create stronger content faster with an AI-powered workflow built for creators, marketers, and online business owners.",
+    icon: PenSquare,
+    description:
+      "Create content that brings attention, clicks, and free traffic from search engines and social media platforms.",
+    keywords: ["content marketing system", "free traffic strategy", "content creation"],
   },
   {
+    name: "Ebook System",
     slug: "ebook-system",
-    title: "Ebook System",
-    image: "/products/ebook-system.png",
-    url: "https://metallfya--irc.thrivecart.com/ebook-system/",
-    badge: "Digital Products",
-    blurb:
-      "Speed up ebook creation and turn ideas into polished digital products without the usual long writing cycle.",
+    icon: BookOpen,
+    description:
+      "Build passive income with simple digital products, ebooks, and easy-to-launch information offers.",
+    keywords: ["passive income online", "ebook business", "digital products"],
   },
   {
+    name: "Email System",
     slug: "email-system",
-    title: "Email System",
-    image: "/products/email-system.png",
-    url: "https://metallfya--irc.thrivecart.com/email-system/",
-    badge: "Email Marketing",
-    blurb:
-      "Build better emails that get opened, read, and acted on with a system focused on inbox performance.",
+    icon: Mail,
+    description:
+      "Build an email list, send follow-ups, and turn leads into daily commissions with email marketing.",
+    keywords: ["email marketing system", "build an email list", "follow-up emails"],
   },
   {
+    name: "Image Generator",
     slug: "image-generator",
-    title: "Image Generator",
-    image: "/products/image-generator.png",
-    url: "https://metallfya--irc.thrivecart.com/image-generator/",
-    badge: "Graphics & Design",
-    blurb:
-      "Create eye-catching images and branded visuals for sales pages, social posts, ads, and digital promotions.",
+    icon: ImageIcon,
+    description:
+      "Create eye-catching graphics and visual content that improve clicks, engagement, and conversions.",
+    keywords: ["image generator", "marketing graphics", "visual content"],
   },
   {
+    name: "Medium System",
     slug: "medium-system",
-    title: "Medium System",
-    image: "/products/medium-system.png",
-    url: "https://metallfya--irc.thrivecart.com/medium-system/",
-    badge: "Publishing",
-    blurb:
-      "Publish smarter across platforms with a content workflow built for bloggers, marketers, and article creators.",
+    icon: Search,
+    description:
+      "Use content publishing platforms to tap into built-in audiences and generate targeted traffic.",
+    keywords: ["Medium traffic", "content publishing", "online authority"],
   },
   {
+    name: "Sales System",
     slug: "sales-system",
-    title: "Sales System",
-    image: "/products/sales-system.png",
-    url: "https://metallfya--irc.thrivecart.com/sales-system/",
-    badge: "Sales Copy",
-    blurb:
-      "Generate stronger sales messaging and persuasive copy built to help you present offers with more clarity and power.",
+    icon: ArrowRight,
+    description:
+      "Turn visitors into buyers with stronger messaging, better offers, and simple conversion strategies.",
+    keywords: ["sales conversion", "increase conversions", "online sales system"],
   },
   {
+    name: "SEO System",
     slug: "seo-system",
-    title: "SEO System",
-    image: "/products/seo-system.png",
-    url: "https://metallfya--irc.thrivecart.com/seo-system/",
-    badge: "SEO",
-    blurb:
-      "Turn SEO into a more practical process with a system focused on visibility, rankings, and content optimization.",
+    icon: Search,
+    description:
+      "Get free Google traffic with search engine optimization strategies designed for long-term growth.",
+    keywords: ["SEO for beginners", "free Google traffic", "rank on Google"],
   },
   {
+    name: "Social System",
     slug: "social-system",
-    title: "Social System",
-    image: "/products/social-system.png",
-    url: "https://metallfya--irc.thrivecart.com/social-system/",
-    badge: "Social Media",
-    blurb:
-      "Create better social content with tools designed to improve branding, consistency, reach, and engagement.",
+    icon: Share2,
+    description:
+      "Use social media marketing to grow your audience, drive traffic, and generate more daily leads.",
+    keywords: ["social media traffic", "grow on social media", "daily leads"],
   },
   {
+    name: "Video System",
     slug: "video-system",
-    title: "Video System",
-    image: "/products/video-system.png",
-    url: "https://metallfya--irc.thrivecart.com/video-system/",
-    badge: "Video Marketing",
-    blurb:
-      "Support your video content process with a system built to help creators plan, produce, and publish with confidence.",
+    icon: Video,
+    description:
+      "Create simple videos that attract views, build trust, and bring more people into your funnel.",
+    keywords: ["video marketing", "short-form video", "traffic from video"],
   },
 ];
 
-const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
- HEAD
-const leadsLeapBanner = "/leadsleap-banner.gif";
+const trackingLink = (slug) => `https://go.freebiebro.org/?src=metallfya--irc.thrivecart.com/${slug}/`;
 
-const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
- 8a608d6 (fix banner final)
+export default function RankableHomepage() {
+  const pageTitle = "10 Digital Systems to Make Money Online | FreebieBro";
+  const pageDescription =
+    "Discover 10 powerful digital systems for affiliate marketing, SEO, email marketing, content, social media, video, and more. Start building online income with proven tools and strategies.";
+  const canonicalUrl = "https://go.freebiebro.org/";
 
-export default function Home() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [showLeadModal, setShowLeadModal] = useState(false);
-  const [leadName, setLeadName] = useState("");
-  const [leadEmail, setLeadEmail] = useState("");
-  const [leadMessage, setLeadMessage] = useState("");
-  const [savingLead, setSavingLead] = useState(false);
-
-  const activeProduct = useMemo(() => products[activeIndex], [activeIndex]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % products.length);
-    }, 4500);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  function goNext() {
-    setActiveIndex((current) => (current + 1) % products.length);
-  }
-
-  function goPrev() {
-    setActiveIndex((current) => (current - 1 + products.length) % products.length);
-  }
-
-  function jumpTo(index) {
-    setActiveIndex(index);
-  }
-
-  function scrollToFeatured(index) {
-    setActiveIndex(index);
-    const el = document.getElementById("featured-product");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-
-  function openLeadModal(product) {
-    setSelectedProduct(product);
-    setLeadMessage("");
-    setShowLeadModal(true);
-  }
-
-  function closeLeadModal() {
-    if (savingLead) return;
-    setShowLeadModal(false);
-    setLeadMessage("");
-  }
-
-  async function handleLeadCapture(event) {
-    event.preventDefault();
-
-    if (!selectedProduct) return;
-
-    if (!leadName.trim() || !leadEmail.trim()) {
-      setLeadMessage("Please enter your name and email.");
-      return;
-    }
-
-    setSavingLead(true);
-    setLeadMessage("");
-
-    const leadData = {
-      name: leadName.trim(),
-      email: leadEmail.trim(),
-      productSlug: selectedProduct.slug,
-      productTitle: selectedProduct.title,
-      productUrl: selectedProduct.url,
-      source: "neonflow-home-funnel",
-      capturedAt: new Date().toISOString(),
-    };
-
-    try {
-      if (db) {
-        await addDoc(collection(db, "leads"), {
-          ...leadData,
-          createdAt: serverTimestamp(),
-        });
-      } else {
-        const existingLeads = JSON.parse(localStorage.getItem("neonflow_leads") || "[]");
-        existingLeads.push(leadData);
-        localStorage.setItem("neonflow_leads", JSON.stringify(existingLeads));
-      }
-
-      localStorage.setItem(
-        "neonflow_last_lead",
-        JSON.stringify({
-          name: leadName.trim(),
-          email: leadEmail.trim(),
-          productTitle: selectedProduct.title,
-        })
-      );
-
-      window.location.href = selectedProduct.url;
-    } catch (error) {
-      setLeadMessage("Lead capture failed. Please try again.");
-      console.error(error);
-    } finally {
-      setSavingLead(false);
-    }
-  }
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: pageTitle,
+    url: canonicalUrl,
+    description: pageDescription,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: products.map((product, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: product.name,
+        url: trackingLink(product.slug),
+        description: product.description,
+      })),
+    },
+  };
 
   return (
     <>
- HEAD
-      <h1 style={{ color: "red", fontSize: "48px", textAlign: "center" }}>
-        TEST HOME PAGE
-      </h1>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta
+          name="keywords"
+          content="make money online, affiliate marketing for beginners, passive income online, digital marketing systems, online business ideas, free traffic, email marketing, SEO system, video marketing, social media marketing"
+        />
+        <link rel="canonical" href={canonicalUrl} />
 
-      <main className="page-wrap" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
-     
-</div> 
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="FreebieBro" />
 
-<h1 style={{ color: "red", fontSize: "48px", textAlign: "center" }}>
-  TEST HOME PAGE
-</h1>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
 
-<main className="page-wrap" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
- 8a608d6 (fix banner final)
-        <section
-          className="glass-card"
-          style={{
-            position: "relative",
-            overflow: "hidden",
-            padding: "2rem",
-            marginBottom: "1.25rem",
-            background:
-              "linear-gradient(135deg, rgba(6,12,30,0.96), rgba(10,18,46,0.94))",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "radial-gradient(circle at 20% 20%, rgba(77,226,255,0.12), transparent 28%), radial-gradient(circle at 80% 20%, rgba(139,92,246,0.14), transparent 28%)",
-              pointerEvents: "none",
-            }}
-          />
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      </Helmet>
 
-          <div style={{ position: "relative", zIndex: 2 }}>
-            <span className="section-kicker">Theoda Metcalf Product Showcase</span>
-
-            <h1
-              style={{
-                margin: "0 0 1rem",
-                fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
-                lineHeight: 0.95,
-              }}
+      <div className="min-h-screen bg-slate-950 text-white">
+        <section className="relative overflow-hidden border-b border-white/10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.14),transparent_30%)]" />
+          <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
+              className="mx-auto max-w-4xl text-center"
             >
-              AI tools built to help you
-              <br />
-              create, market, and sell faster
-            </h1>
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
+                Make Money Online With Real Systems
+              </p>
+              <h1 className="text-4xl font-black leading-tight md:text-6xl">
+                10 Digital Systems to Help You Build Traffic, Leads, and Online Income
+              </h1>
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
+                Explore proven systems for affiliate marketing, content marketing, email marketing, SEO,
+                social media, sales, ebooks, images, Medium traffic, and video marketing — all in one place.
+              </p>
 
-            <p className="muted-text" style={{ maxWidth: 780, fontSize: "1.05rem" }}>
-              Explore each system below, capture the lead first, then send buyers
-              straight through to the matching ThriveCart offer.
-            </p>
+              <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <a
+                  href="#products"
+                  className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-base font-semibold text-slate-950 shadow-lg transition hover:-translate-y-0.5"
+                >
+                  Explore All 10 Systems
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href={trackingLink("affiliate-system")}
+                  className="inline-flex items-center gap-2 rounded-2xl border border-cyan-400/40 bg-cyan-400/10 px-6 py-3 text-base font-semibold text-cyan-200 transition hover:bg-cyan-400/20"
+                >
+                  Start With Affiliate System
+                </a>
+              </div>
 
-            <div
-              style={{
-                display: "flex",
-                gap: "12px",
-                flexWrap: "wrap",
-                marginTop: "1.25rem",
-              }}
-            >
-              <a href="#featured-product" className="button-link">
-                View Featured Product
-              </a>
-
-              <a href="#all-products" className="ghost-button">
-                View All Products
-              </a>
-
-              <Link to="/thank-you" className="ghost-button">
-                Thank You Page
-              </Link>
-            </div>
+              <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {[
+                  "Beginner-friendly online business systems",
+                  "SEO keywords built into the page for Google visibility",
+                  "Direct tracked links for all 10 products",
+                ].map((item) => (
+                  <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
+                    <div className="flex items-start gap-3 text-left">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" />
+                      <span>{item}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        <RevealSection className="glass-card" delay={0.05}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "1rem",
-              flexWrap: "wrap",
-              padding: "0.25rem 0",
-            }}
-          >
-            <div>
-              <span className="section-kicker">Recommended Extra Income Tool</span>
-              <h3 style={{ margin: "0.35rem 0 0.35rem" }}>Advertise with LeadsLeap</h3>
-              <p className="muted-text" style={{ margin: 0, maxWidth: 700 }}>
-                Looking for another traffic and advertising option? Check out LeadsLeap and
-                use it alongside your funnel.
+        <main className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+          <section className="mx-auto max-w-4xl">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur">
+              <h2 className="text-2xl font-bold md:text-3xl">Why These Digital Marketing Systems Work</h2>
+              <p className="mt-4 text-slate-300 leading-8">
+                If you are searching for the best way to make money online, the biggest mistake is trying random
+                tactics without a real plan. This homepage is built around 10 connected digital systems that help
+                with traffic generation, lead capture, conversions, and long-term growth. Whether you want affiliate
+                marketing for beginners, passive income ideas, free traffic from Google, or better email follow-up,
+                these systems give you a direct next step.
+              </p>
+              <p className="mt-4 text-slate-300 leading-8">
+                Start with one system. Learn it. Apply it. Then stack the next one. That is how real online business
+                growth happens.
+              </p>
+            </div>
+          </section>
+
+          <section id="products" className="mt-16">
+            <div className="mb-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-300">All Products</p>
+              <h2 className="mt-3 text-3xl font-black md:text-5xl">Choose the System That Fits Your Goal</h2>
+              <p className="mx-auto mt-4 max-w-3xl text-slate-300 leading-8">
+                Each product below targets a different part of online business growth, from free traffic and SEO to
+                email marketing, content creation, social media, sales, and video.
               </p>
             </div>
 
-            <a
-              href={leadsLeapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-link"
-            >
-              Visit LeadsLeap
-            </a>
-          </div>
-        </RevealSection>
-
-        <RevealSection className="glass-card" delay={0.08}>
-          <div
-            style={{
-              display: "grid",
-              placeItems: "center",
-              padding: "0.5rem 0",
-            }}
-          >
-            <a
-              href={leadsLeapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                justifyContent: "center",
-                alignItems: "center",
-                maxWidth: "100%",
-              }}
-            >
-              <img
-                src={leadsLeapBanner}
-                alt="Advertise with LeadsLeap"
-                style={{
-                  width: "100%",
-                  maxWidth: "468px",
-                  height: "auto",
- HEAD
-                  display: "block",
-
- 8a608d6 (fix banner final)
-                  borderRadius: "12px",
-                  border: "1px solid rgba(77,226,255,0.18)",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
-                }}
-              />
-            </a>
-          </div>
-        </RevealSection>
-
-        <RevealSection className="glass-card section-block">
-          <div
-            id="featured-product"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(0, 1.08fr) minmax(0, 1fr)",
-              gap: "1.25rem",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                borderRadius: "24px",
-                overflow: "hidden",
-                minHeight: "420px",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                display: "grid",
-                placeItems: "center",
-                padding: "1rem",
-              }}
-            >
-              <img
-                src={activeProduct.image}
-                alt={activeProduct.title}
-                style={{
-                  width: "100%",
-                  maxHeight: "390px",
-                  objectFit: "contain",
-                  borderRadius: "18px",
-                }}
-              />
-            </div>
-
-            <div>
-              <div
-                style={{
-                  display: "inline-flex",
-                  padding: "0.4rem 0.75rem",
-                  borderRadius: "999px",
-                  background: "rgba(77,226,255,0.12)",
-                  color: "var(--cyan)",
-                  fontWeight: 700,
-                  marginBottom: "0.85rem",
-                }}
-              >
-                {activeProduct.badge}
-              </div>
-
-              <h2 style={{ marginTop: 0, marginBottom: "0.75rem" }}>
-                {activeProduct.title}
-              </h2>
-
-              <p
-                className="muted-text"
-                style={{
-                  fontSize: "1.06rem",
-                  lineHeight: 1.7,
-                  marginBottom: "1.25rem",
-                }}
-              >
-                {activeProduct.blurb}
-              </p>
-
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                <button
-                  type="button"
-                  className="button-link"
-                  onClick={() => openLeadModal(activeProduct)}
-                >
-                  Get Access
-                </button>
-
-                <button type="button" className="ghost-button" onClick={goPrev}>
-                  Previous
-                </button>
-
-                <button type="button" className="ghost-button" onClick={goNext}>
-                  Next
-                </button>
-              </div>
-
-              <div
-                style={{
-                  marginTop: "1.25rem",
-                  display: "flex",
-                  gap: "8px",
-                  flexWrap: "wrap",
-                }}
-              >
-                {products.map((product, index) => (
-                  <button
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {products.map((product, index) => {
+                const Icon = product.icon;
+                return (
+                  <motion.article
                     key={product.slug}
-                    type="button"
-                    onClick={() => jumpTo(index)}
-                    className="ghost-button"
-                    style={{
-                      minHeight: "unset",
-                      padding: "0.55rem 0.8rem",
-                      borderColor:
-                        activeIndex === index
-                          ? "rgba(77,226,255,0.55)"
-                          : "rgba(255,255,255,0.12)",
-                      background:
-                        activeIndex === index
-                          ? "rgba(77,226,255,0.12)"
-                          : "rgba(255,255,255,0.03)",
-                    }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.35, delay: index * 0.04 }}
+                    className="group flex h-full flex-col rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-xl transition hover:-translate-y-1 hover:border-cyan-400/40"
                   >
-                    {product.title}
-                  </button>
+                    <div className="flex items-center gap-3">
+                      <div className="rounded-2xl bg-cyan-400/10 p-3 text-cyan-300">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <h3 className="text-xl font-bold">{product.name}</h3>
+                    </div>
+
+                    <p className="mt-4 flex-1 leading-7 text-slate-300">{product.description}</p>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {product.keywords.map((keyword) => (
+                        <span
+                          key={keyword}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300"
+                        >
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={trackingLink(product.slug)}
+                      className="mt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 font-semibold text-slate-950 transition hover:bg-cyan-200"
+                    >
+                      Learn More
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="mt-16 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+              <h2 className="text-2xl font-bold md:text-3xl">SEO Keywords This Homepage Targets</h2>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {[
+                  "make money online",
+                  "affiliate marketing for beginners",
+                  "passive income online",
+                  "digital marketing systems",
+                  "online business ideas",
+                  "free traffic from Google",
+                  "email marketing system",
+                  "SEO for beginners",
+                  "video marketing system",
+                  "social media traffic",
+                ].map((term) => (
+                  <div key={term} className="rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3 text-sm text-slate-200">
+                    {term}
+                  </div>
                 ))}
               </div>
             </div>
-          </div>
-        </RevealSection>
 
-        <RevealSection className="section-block" delay={0.12}>
-          <span className="section-kicker">All Products</span>
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-cyan-400/10 to-orange-400/10 p-8">
+              <h2 className="text-2xl font-bold md:text-3xl">Best Way to Use This Page</h2>
+              <ul className="mt-6 space-y-4 text-slate-200">
+                {[
+                  "Use this page as your homepage or main product hub.",
+                  "Link blog posts, social posts, Quora answers, and videos back to this page.",
+                  "Add product screenshots or banners later for even better click-through rate.",
+                  "Create a blog article for each system and link them back into this page for stronger SEO.",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-orange-300" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
 
-          <div
-            id="all-products"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "1.25rem",
-            }}
-          >
-            {products.map((product, index) => (
-              <article
-                key={product.slug}
-                className="glass-card"
-                style={{
-                  border:
-                    activeIndex === index
-                      ? "1px solid rgba(77,226,255,0.45)"
-                      : "1px solid rgba(125,154,255,0.18)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  minHeight: "100%",
-                }}
+          <section className="mt-16">
+            <div className="rounded-[2rem] border border-cyan-400/20 bg-gradient-to-r from-cyan-400/10 via-slate-900 to-orange-400/10 p-8 text-center md:p-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Start Here</p>
+              <h2 className="mt-3 text-3xl font-black md:text-5xl">Ready to Build Your Online Income?</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-slate-300 leading-8">
+                Start with the Affiliate System first, then stack content, email, SEO, and video as you grow.
+                One strong system can change everything.
+              </p>
+              <a
+                href={trackingLink("affiliate-system")}
+                className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-base font-bold text-slate-950 transition hover:-translate-y-0.5"
               >
-                <div
-                  style={{
-                    height: "360px",
-                    borderRadius: "18px",
-                    overflow: "hidden",
-                    background:
-                      "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(77,226,255,0.04))",
-                    display: "grid",
-                    placeItems: "center",
-                    padding: "18px",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
-                      borderRadius: "12px",
-                    }}
-                  />
-                </div>
-
-                <div className="offer-tag" style={{ marginBottom: "0.7rem" }}>
-                  {product.badge}
-                </div>
-
-                <h3 style={{ marginTop: 0 }}>{product.title}</h3>
-                <p className="muted-text">{product.blurb}</p>
-
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "10px",
-                    flexWrap: "wrap",
-                    marginTop: "1rem",
-                  }}
-                >
-                  <button
-                    type="button"
-                    className="ghost-button"
-                    onClick={() => scrollToFeatured(index)}
-                  >
-                    Preview
-                  </button>
-
-                  <button
-                    type="button"
-                    className="button-link"
-                    onClick={() => openLeadModal(product)}
-                  >
-                    Get Access
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        </RevealSection>
-      </main>
-
-      {showLeadModal && selectedProduct && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(3, 6, 14, 0.82)",
-            backdropFilter: "blur(8px)",
-            display: "grid",
-            placeItems: "center",
-            padding: "1rem",
-            zIndex: 999,
-          }}
-        >
-          <div
-            className="glass-card"
-            style={{
-              width: "min(560px, 100%)",
-              padding: "1.5rem",
-              border: "1px solid rgba(77,226,255,0.24)",
-            }}
-          >
-            <span className="section-kicker">Get Access First</span>
-            <h2 style={{ marginTop: 0 }}>{selectedProduct.title}</h2>
-            <p className="muted-text" style={{ marginBottom: "1rem" }}>
-              Enter your name and email before continuing to the ThriveCart checkout.
-            </p>
-
-            <form
-              onSubmit={handleLeadCapture}
-              style={{ display: "grid", gap: "1rem" }}
-            >
-              <label style={{ display: "grid", gap: "0.45rem" }}>
-                Name
-                <input
-                  type="text"
-                  value={leadName}
-                  onChange={(e) => setLeadName(e.target.value)}
-                  placeholder="Your name"
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "0.95rem 1rem",
-                    borderRadius: "16px",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    background: "rgba(6, 10, 18, 0.8)",
-                    color: "white",
-                    outline: "none",
-                  }}
-                />
-              </label>
-
-              <label style={{ display: "grid", gap: "0.45rem" }}>
-                Email
-                <input
-                  type="email"
-                  value={leadEmail}
-                  onChange={(e) => setLeadEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "0.95rem 1rem",
-                    borderRadius: "16px",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    background: "rgba(6, 10, 18, 0.8)",
-                    color: "white",
-                    outline: "none",
-                  }}
-                />
-              </label>
-
-              {leadMessage && <div className="message-box">{leadMessage}</div>}
-
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                <button
-                  type="submit"
-                  className="button-link"
-                  disabled={savingLead}
-                >
-                  {savingLead ? "Saving..." : "Continue To Checkout"}
-                </button>
-
-                <button
-                  type="button"
-                  className="ghost-button"
-                  onClick={closeLeadModal}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+                Start With Affiliate System
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </section>
+        </main>
+      </div>
     </>
   );
 }
