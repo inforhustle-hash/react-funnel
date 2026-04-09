@@ -100,7 +100,7 @@ const products = [
 const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
  HEAD
 const leadsLeapBanner = "/leadsleap-banner.gif";
-=======
+
 const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
  8a608d6 (fix banner final)
 
