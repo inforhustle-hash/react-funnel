@@ -86,7 +86,16 @@ const products = [
   },
 ];
 
+<<<<<<< HEAD
 const trackingLink = (slug) => `https://go.freebiebro.org/?src=metallfya--irc.thrivecart.com/${slug}/`;
+=======
+const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
+<<<<<<< HEAD
+const leadsLeapBanner = "/leadsleap-banner.gif";
+
+const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
+>>>>>>> 8a608d6 (fix banner final)
+>>>>>>> bfb00ae (Fix Home.jsx merge markers)
 
 export default function RankableHomepage() {
   const pageTitle = "10 Digital Systems to Make Money Online | FreebieBro";
@@ -123,11 +132,18 @@ export default function RankableHomepage() {
         />
         <link rel="canonical" href={canonicalUrl} />
 
+<<<<<<< HEAD
         <meta property="og:type" content="website" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="FreebieBro" />
+=======
+      <main className="page-wrap" style={{ paddingTop: "2rem", paddingBottom: "4rem" }}>
+
+     
+</div> 
+>>>>>>> bfb00ae (Fix Home.jsx merge markers)
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
