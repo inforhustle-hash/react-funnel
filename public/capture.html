@@ -174,48 +174,47 @@
     <div class="trust">No spam • Instant access • Bonus included</div>
   </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const src = params.get("src") || "direct";
+ <script>
+  const params = new URLSearchParams(window.location.search);
+  const src = params.get("src") || "direct";
 
-    const liveThankYouUrl = "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
+  const liveThankYouUrl =
+    "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
 
-    document.getElementById("sourceField").value = src;
-    document.getElementById("redirectField").value = liveThankYouUrl;
-    localStorage.setItem("funnel_src", src);
+  document.getElementById("sourceField").value = src;
+  document.getElementById("redirectField").value = liveThankYouUrl;
 
-    let leadSent = false;
+  let leadSent = false;
 
-    document.getElementById("leadForm").addEventListener("submit", function () {
-      if (leadSent) return;
-      leadSent = true;
+  document.getElementById("leadForm").addEventListener("submit", function () {
+    if (leadSent) return;
+    leadSent = true;
 
-      const btn = document.getElementById("submitBtn");
-      if (btn) btn.disabled = true;
+    // stop double click
+    const btn = document.getElementById("submitBtn");
+    if (btn) btn.disabled = true;
 
-      const leadData = {
-        src: src,
-        name: document.getElementById("nameField").value.trim(),
-        email: document.getElementById("emailField").value.trim(),
-        listId: "120697",
-        source: "sendsteed",
-        url: window.location.pathname + window.location.search,
-        ip: "",
-        userAgent: navigator.userAgent
-      };
+    const leadData = {
+      src: src,
+      name: document.getElementById("nameField").value.trim(),
+      email: document.getElementById("emailField").value.trim(),
+      listId: "120697",
+      source: "sendsteed",
+      url: window.location.pathname + window.location.search,
+      ip: "",
+      userAgent: navigator.userAgent
+    };
 
-      localStorage.setItem("pending_lead_log", JSON.stringify(leadData));
+    const payload = JSON.stringify(leadData);
+    const webhookUrl =
+      "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
 
-      const payload = JSON.stringify(leadData);
-      const webhookUrl = "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
-
-      try {
-        const blob = new Blob([payload], { type: "application/json" });
-        navigator.sendBeacon(webhookUrl, blob);
-      } catch (err) {
-        console.error("Lead log failed", err);
-      }
-    });
-  </script>
+    // ONLY send once
+    navigator.sendBeacon(
+      webhookUrl,
+      new Blob([payload], { type: "application/json" })
+    );
+  });
+</script>
 </body>
 </html>
