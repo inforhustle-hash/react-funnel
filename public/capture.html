@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -119,6 +119,11 @@
     opacity: 0.95;
   }
 
+  button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
   .trust {
     margin-top: 14px;
     font-size: 12px;
@@ -163,7 +168,7 @@
       <input type="hidden" name="lluid" value="theojm" />
       <input type="hidden" name="redirect" id="redirectField" value="https://go.freebiebro.org/thankyou.html" />
       <input type="hidden" name="source" id="sourceField" value="" />
-      <button type="submit">Unlock Instant Access</button>
+      <button type="submit" id="submitBtn">Unlock Instant Access</button>
     </form>
 
     <div class="trust">No spam • Instant access • Bonus included</div>
@@ -179,7 +184,15 @@
     document.getElementById("redirectField").value = liveThankYouUrl;
     localStorage.setItem("funnel_src", src);
 
+    let leadSent = false;
+
     document.getElementById("leadForm").addEventListener("submit", function () {
+      if (leadSent) return;
+      leadSent = true;
+
+      const btn = document.getElementById("submitBtn");
+      if (btn) btn.disabled = true;
+
       const leadData = {
         src: src,
         name: document.getElementById("nameField").value.trim(),
@@ -197,21 +210,8 @@
       const webhookUrl = "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
 
       try {
-        if (navigator.sendBeacon) {
-          const blob = new Blob([payload], { type: "application/json" });
-          navigator.sendBeacon(webhookUrl, blob);
-        } else {
-          fetch(webhookUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: payload,
-            keepalive: true
-          }).catch(function (err) {
-            console.error("Lead log failed", err);
-          });
-        }
+        const blob = new Blob([payload], { type: "application/json" });
+        navigator.sendBeacon(webhookUrl, blob);
       } catch (err) {
         console.error("Lead log failed", err);
       }
