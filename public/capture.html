@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -119,6 +119,11 @@
     opacity: 0.95;
   }
 
+  button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
   .trust {
     margin-top: 14px;
     font-size: 12px;
@@ -163,59 +168,82 @@
       <input type="hidden" name="lluid" value="theojm" />
       <input type="hidden" name="redirect" id="redirectField" value="https://go.freebiebro.org/thankyou.html" />
       <input type="hidden" name="source" id="sourceField" value="" />
-      <button type="submit">Unlock Instant Access</button>
+      <button type="submit" id="submitBtn">Unlock Instant Access</button>
     </form>
 
     <div class="trust">No spam • Instant access • Bonus included</div>
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const src = params.get("src") || "direct";
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const src = params.get("src") || "direct";
 
-    const liveThankYouUrl = "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
+      const form = document.getElementById("leadForm");
+      const btn = document.getElementById("submitBtn");
+      const nameField = document.getElementById("nameField");
+      const emailField = document.getElementById("emailField");
+      const sourceField = document.getElementById("sourceField");
+      const redirectField = document.getElementById("redirectField");
 
-    document.getElementById("sourceField").value = src;
-    document.getElementById("redirectField").value = liveThankYouUrl;
-    localStorage.setItem("funnel_src", src);
+      const liveThankYouUrl =
+        "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
 
-    document.getElementById("leadForm").addEventListener("submit", function () {
-      const leadData = {
-        src: src,
-        name: document.getElementById("nameField").value.trim(),
-        email: document.getElementById("emailField").value.trim(),
-        listId: "120697",
-        source: "sendsteed",
-        url: window.location.pathname + window.location.search,
-        ip: "",
-        userAgent: navigator.userAgent
-      };
+      sourceField.value = src;
+      redirectField.value = liveThankYouUrl;
+      localStorage.setItem("funnel_src", src);
 
-      localStorage.setItem("pending_lead_log", JSON.stringify(leadData));
+      let submitted = false;
 
-      const payload = JSON.stringify(leadData);
-      const webhookUrl = "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
-
-      try {
-        if (navigator.sendBeacon) {
-          const blob = new Blob([payload], { type: "application/json" });
-          navigator.sendBeacon(webhookUrl, blob);
-        } else {
-          fetch(webhookUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: payload,
-            keepalive: true
-          }).catch(function (err) {
-            console.error("Lead log failed", err);
-          });
+      form.addEventListener("submit", function () {
+        if (submitted) {
+          return false;
         }
-      } catch (err) {
-        console.error("Lead log failed", err);
-      }
-    });
+
+        submitted = true;
+
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = "Submitting...";
+        }
+
+        const leadData = {
+          src: src,
+          name: nameField.value.trim(),
+          email: emailField.value.trim(),
+          listId: "120697",
+          source: "sendsteed",
+          url: window.location.pathname + window.location.search,
+          ip: "",
+          userAgent: navigator.userAgent
+        };
+
+        localStorage.setItem("pending_lead_log", JSON.stringify(leadData));
+
+        const payload = JSON.stringify(leadData);
+        const webhookUrl = "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
+
+        try {
+          if (navigator.sendBeacon) {
+            const blob = new Blob([payload], { type: "application/json" });
+            navigator.sendBeacon(webhookUrl, blob);
+          } else {
+            fetch(webhookUrl, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: payload,
+              keepalive: true
+            }).catch(function (err) {
+              console.error("Lead log failed", err);
+            });
+          }
+        } catch (err) {
+          console.error("Lead log failed", err);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
