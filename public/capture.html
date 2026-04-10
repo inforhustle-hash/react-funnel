@@ -175,72 +175,33 @@
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const src = params.get("src") || "direct";
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const src = params.get("src") || "direct";
 
-    const form = document.getElementById("leadForm");
-    const btn = document.getElementById("submitBtn");
-    const nameField = document.getElementById("nameField");
-    const emailField = document.getElementById("emailField");
-    const sourceField = document.getElementById("sourceField");
-    const redirectField = document.getElementById("redirectField");
+      const form = document.getElementById("leadForm");
+      const btn = document.getElementById("submitBtn");
+      const sourceField = document.getElementById("sourceField");
+      const redirectField = document.getElementById("redirectField");
 
-    const liveThankYouUrl =
-      "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
+      sourceField.value = src;
+      redirectField.value = "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
 
-    sourceField.value = src;
-    redirectField.value = liveThankYouUrl;
+      let submitted = false;
 
-    let leadSent = false;
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      if (leadSent) return;
-      leadSent = true;
-
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Submitting...";
-      }
-
-      const leadData = {
-        src: src,
-        name: nameField.value.trim(),
-        email: emailField.value.trim(),
-        listId: "120697",
-        source: "sendsteed",
-        url: window.location.pathname + window.location.search,
-        ip: "",
-        userAgent: navigator.userAgent
-      };
-
-      const payload = JSON.stringify(leadData);
-      const webhookUrl =
-        "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
-
-      try {
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon(
-            webhookUrl,
-            new Blob([payload], { type: "application/json" })
-          );
-        } else {
-          fetch(webhookUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: payload,
-            keepalive: true
-          }).catch(() => {});
+      form.addEventListener("submit", function () {
+        if (submitted) {
+          return false;
         }
-      } catch (err) {
-        console.error("Lead log failed", err);
-      }
 
-      setTimeout(() => {
-        form.submit();
-      }, 300);
-    });
+        submitted = true;
+
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = "Submitting...";
+        }
+      });
+    })();
   </script>
 </body>
 </html>
