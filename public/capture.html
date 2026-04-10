@@ -174,47 +174,73 @@
     <div class="trust">No spam • Instant access • Bonus included</div>
   </div>
 
- <script>
-  const params = new URLSearchParams(window.location.search);
-  const src = params.get("src") || "direct";
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const src = params.get("src") || "direct";
 
-  const liveThankYouUrl =
-    "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
-
-  document.getElementById("sourceField").value = src;
-  document.getElementById("redirectField").value = liveThankYouUrl;
-
-  let leadSent = false;
-
-  document.getElementById("leadForm").addEventListener("submit", function () {
-    if (leadSent) return;
-    leadSent = true;
-
-    // stop double click
+    const form = document.getElementById("leadForm");
     const btn = document.getElementById("submitBtn");
-    if (btn) btn.disabled = true;
+    const nameField = document.getElementById("nameField");
+    const emailField = document.getElementById("emailField");
+    const sourceField = document.getElementById("sourceField");
+    const redirectField = document.getElementById("redirectField");
 
-    const leadData = {
-      src: src,
-      name: document.getElementById("nameField").value.trim(),
-      email: document.getElementById("emailField").value.trim(),
-      listId: "120697",
-      source: "sendsteed",
-      url: window.location.pathname + window.location.search,
-      ip: "",
-      userAgent: navigator.userAgent
-    };
+    const liveThankYouUrl =
+      "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
 
-    const payload = JSON.stringify(leadData);
-    const webhookUrl =
-      "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
+    sourceField.value = src;
+    redirectField.value = liveThankYouUrl;
 
-    // ONLY send once
-    navigator.sendBeacon(
-      webhookUrl,
-      new Blob([payload], { type: "application/json" })
-    );
-  });
-</script>
+    let leadSent = false;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      if (leadSent) return;
+      leadSent = true;
+
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Submitting...";
+      }
+
+      const leadData = {
+        src: src,
+        name: nameField.value.trim(),
+        email: emailField.value.trim(),
+        listId: "120697",
+        source: "sendsteed",
+        url: window.location.pathname + window.location.search,
+        ip: "",
+        userAgent: navigator.userAgent
+      };
+
+      const payload = JSON.stringify(leadData);
+      const webhookUrl =
+        "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
+
+      try {
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(
+            webhookUrl,
+            new Blob([payload], { type: "application/json" })
+          );
+        } else {
+          fetch(webhookUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: payload,
+            keepalive: true
+          }).catch(() => {});
+        }
+      } catch (err) {
+        console.error("Lead log failed", err);
+      }
+
+      setTimeout(() => {
+        form.submit();
+      }, 300);
+    });
+  </script>
 </body>
 </html>
