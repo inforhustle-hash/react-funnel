@@ -15,16 +15,16 @@ import {
 } from "lucide-react";
 
 const products = [
-  { name: "Affiliate System", slug: "affiliate-system", icon: BadgeDollarSign, description: "Learn how to start affiliate marketing, promote digital products, and build online income.", keywords: ["affiliate marketing", "make money online"] },
-  { name: "Content System", slug: "content-system", icon: PenSquare, description: "Create content that brings attention and traffic.", keywords: ["content marketing", "traffic"] },
-  { name: "Ebook System", slug: "ebook-system", icon: BookOpen, description: "Build passive income with digital products.", keywords: ["ebooks", "passive income"] },
-  { name: "Email System", slug: "email-system", icon: Mail, description: "Turn leads into daily commissions with email marketing.", keywords: ["email marketing", "list building"] },
-  { name: "Image Generator", slug: "image-generator", icon: ImageIcon, description: "Create eye-catching graphics.", keywords: ["graphics", "visual content"] },
-  { name: "Medium System", slug: "medium-system", icon: Search, description: "Tap into built-in audiences.", keywords: ["medium traffic"] },
-  { name: "Sales System", slug: "sales-system", icon: ArrowRight, description: "Convert visitors into buyers.", keywords: ["sales", "conversion"] },
-  { name: "SEO System", slug: "seo-system", icon: Search, description: "Get free Google traffic.", keywords: ["SEO", "google traffic"] },
-  { name: "Social System", slug: "social-system", icon: Share2, description: "Grow your audience.", keywords: ["social media"] },
-  { name: "Video System", slug: "video-system", icon: Video, description: "Use video to drive traffic.", keywords: ["video marketing"] }
+  { name: "Affiliate System", slug: "affiliate-system", icon: BadgeDollarSign, description: "Learn how to start affiliate marketing and build income.", keywords: ["affiliate marketing"] },
+  { name: "Content System", slug: "content-system", icon: PenSquare, description: "Create content that drives traffic.", keywords: ["content marketing"] },
+  { name: "Ebook System", slug: "ebook-system", icon: BookOpen, description: "Build passive income with ebooks.", keywords: ["ebooks"] },
+  { name: "Email System", slug: "email-system", icon: Mail, description: "Turn leads into sales with email.", keywords: ["email marketing"] },
+  { name: "Image Generator", slug: "image-generator", icon: ImageIcon, description: "Create marketing visuals.", keywords: ["graphics"] },
+  { name: "Medium System", slug: "medium-system", icon: Search, description: "Tap into built-in traffic.", keywords: ["medium"] },
+  { name: "Sales System", slug: "sales-system", icon: ArrowRight, description: "Convert traffic into buyers.", keywords: ["sales"] },
+  { name: "SEO System", slug: "seo-system", icon: Search, description: "Get free Google traffic.", keywords: ["SEO"] },
+  { name: "Social System", slug: "social-system", icon: Share2, description: "Grow on social media.", keywords: ["social"] },
+  { name: "Video System", slug: "video-system", icon: Video, description: "Use video for traffic.", keywords: ["video"] }
 ];
 
 const getSrc = () => {
@@ -38,7 +38,7 @@ const getSrc = () => {
 };
 
 export default function RankableHomepage() {
-  const src = getSrc(); // ✅ LOCKED ONCE
+  const src = getSrc();
 
   const trackingLink = (slug) => {
     const encodedSrc = encodeURIComponent(src);
@@ -62,68 +62,87 @@ export default function RankableHomepage() {
   const extraProductsBanner = "https://imgallery.llsvr.com/theojm.69dd41eda403c.png";
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <>
+      <Helmet>
+        <title>10 Digital Systems to Make Money Online</title>
+      </Helmet>
 
-      <div className="text-center py-20">
-        <h1 className="text-4xl font-bold">10 Systems To Make Money Online</h1>
+      <div className="min-h-screen bg-slate-950 text-white text-center py-20">
 
-        <div className="mt-6 flex justify-center gap-4">
-          <a href={trackingLink("affiliate-system")} className="bg-white text-black px-6 py-3 rounded-xl font-bold">
-            Start Here
-          </a>
+        <h1 className="text-4xl font-bold mb-6">
+          10 Systems To Build Traffic, Leads, and Income
+        </h1>
+
+        <a
+          href={trackingLink("affiliate-system")}
+          className="bg-white text-black px-6 py-3 rounded-xl font-bold inline-block"
+        >
+          Start Here
+        </a>
+
+        {/* PRODUCTS */}
+        <div className="grid md:grid-cols-3 gap-6 px-6 mt-16">
+          {products.map((product) => (
+            <div key={product.slug} className="bg-slate-800 p-6 rounded-xl">
+              <h3 className="text-xl font-bold">{product.name}</h3>
+              <p className="text-slate-300 mt-2">{product.description}</p>
+
+              <a
+                href={trackingLink(product.slug)}
+                className="mt-4 inline-block bg-white text-black px-4 py-2 rounded"
+              >
+                Learn More
+              </a>
+            </div>
+          ))}
         </div>
-      </div>
 
-      <div className="grid md:grid-cols-3 gap-6 px-6">
-        {products.map((product) => (
-          <div key={product.slug} className="bg-slate-800 p-6 rounded-xl">
-            <h3 className="text-xl font-bold">{product.name}</h3>
-            <p className="text-slate-300 mt-2">{product.description}</p>
+        {/* 🔥 FIXED BANNERS SECTION */}
+        <div style={{ marginTop: "60px" }}>
 
-            <a
-              href={trackingLink(product.slug)}
-              className="mt-4 inline-block bg-white text-black px-4 py-2 rounded"
-            >
-              Learn More
-            </a>
-          </div>
-        ))}
-      </div>
+          {/* Banner 1 */}
+          <a
+            href={leadsLeapTrackedUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "block", marginBottom: "25px" }}
+          >
+            <img
+              src={leadsLeapBanner}
+              alt="LeadsLeap Banner"
+              style={{
+                maxWidth: "468px",
+                width: "100%",
+                borderRadius: "10px",
+                display: "block",
+                margin: "0 auto"
+              }}
+            />
+          </a>
 
-      <div className="text-center mt-20">
+          {/* Banner 2 */}
+          <a
+            href={extraProductsTrackedUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "block" }}
+          >
+            <img
+              src={extraProductsBanner}
+              alt="Extra Products"
+              style={{
+                maxWidth: "468px",
+                width: "100%",
+                borderRadius: "10px",
+                display: "block",
+                margin: "0 auto"
+              }}
+            />
+          </a>
 
-        {/* LeadsLeap Banner */}
-        <a href={leadsLeapTrackedUrl()} target="_blank" rel="noopener noreferrer">
-          <img
-            src={leadsLeapBanner}
-            alt="LeadsLeap Banner"
-            style={{
-              maxWidth: "468px",
-              width: "100%",
-              borderRadius: "10px",
-              margin: "20px auto",
-              display: "block"
-            }}
-          />
-        </a>
-
-        {/* Extra Products Banner */}
-        <a href={extraProductsTrackedUrl()} target="_blank" rel="noopener noreferrer">
-          <img
-            src={extraProductsBanner}
-            alt="Extra Products"
-            style={{
-              maxWidth: "468px",
-              width: "100%",
-              borderRadius: "10px",
-              margin: "20px auto",
-              display: "block"
-            }}
-          />
-        </a>
+        </div>
 
       </div>
-
-    </div>
+    </>
   );
 }
