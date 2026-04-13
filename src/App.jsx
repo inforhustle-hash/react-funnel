@@ -93,7 +93,7 @@ export default function App() {
               />
             </a>
             <p style={{ marginTop: "6px", fontSize: "13px", opacity: 0.8 }}>
-              👉 Click to check it out
+              👆 Click the banner above to get started
             </p>
           </div>
 
@@ -117,7 +117,7 @@ export default function App() {
               />
             </a>
             <p style={{ marginTop: "6px", fontSize: "13px", opacity: 0.8 }}>
-              👉 Click to check it out
+              👆 Click the banner above to get started
             </p>
           </div>
 
@@ -141,7 +141,7 @@ export default function App() {
               />
             </a>
             <p style={{ marginTop: "6px", fontSize: "13px", opacity: 0.8 }}>
-              👉 Click to check it out
+              👆 Click the banner above to get started
             </p>
           </div>
 
