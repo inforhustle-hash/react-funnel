@@ -91,13 +91,6 @@ const products = [
 const trackingLink = (slug) => `https://go.freebiebro.org/?src=metallfya--irc.thrivecart.com/${slug}/`;
 
 const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
-
-const leadsLeapBanner = "/leadsleap-banner.gif";
-
-const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
-const trackingLink = (slug) => `https://go.freebiebro.org/?src=metallfya--irc.thrivecart.com/${slug}/`;
-
-const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
 const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
 
 export default function RankableHomepage() {
