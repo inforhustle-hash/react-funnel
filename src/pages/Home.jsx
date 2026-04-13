@@ -365,6 +365,40 @@ const schema = {
 
           <section className="mt-16">
             <div className="rounded-[2rem] border border-cyan-400/20 bg-gradient-to-r from-cyan-400/10 via-slate-900 to-orange-400/10 p-8 text-center md:p-12">
+              <a
+  href={trackingLink("affiliate-system")}
+  className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-base font-bold text-slate-950 transition hover:-translate-y-0.5"
+>
+  Start With Affiliate System
+  <ArrowRight className="h-4 w-4" />
+</a>
+              <div style={{ marginTop: "30px", textAlign: "center" }}>
+  <a
+    href={leadsLeapUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      src={leadsLeapBanner}
+      alt="LeadsLeap Banner"
+      style={{ maxWidth: "100%", height: "auto", borderRadius: "10px" }}
+    />
+  </a>
+
+  <div style={{ marginTop: "20px" }}>
+    <a
+      href="https://n8n-production-01ac.up.railway.app/webhook/t?src=homepage&offer=extra-products&url=https%3A%2F%2Frotatelinkpro.com%2FTheojm%2Fmoneymakertools%2F"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="/Extra money-making tools with golden glow.png"
+        alt="Check out these exciting products"
+        style={{ maxWidth: "100%", height: "auto", borderRadius: "10px" }}
+      />
+    </a>
+  </div>
+</div>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Start Here</p>
               <h2 className="mt-3 text-3xl font-black md:text-5xl">Ready to Build Your Online Income?</h2>
               <p className="mx-auto mt-4 max-w-2xl text-slate-300 leading-8">
