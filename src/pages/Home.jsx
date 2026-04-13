@@ -91,12 +91,20 @@ const products = [
 const trackingLink = (slug) => `https://go.freebiebro.org/?src=metallfya--irc.thrivecart.com/${slug}/`;
 
 const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
-<<<<<<< HEAD
+
 const leadsLeapBanner = "/leadsleap-banner.gif";
 
 const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
->>>>>>> 8a608d6 (fix banner final)
->>>>>>> bfb00ae (Fix Home.jsx merge markers)
+const trackingLink = (slug) => `https://go.freebiebro.org/?src=metallfya--irc.thrivecart.com/${slug}/`;
+
+const leadsLeapUrl = "https://leadsleap.com/?r=theojm";
+const leadsLeapBanner = "https://leadsleap.com/images/b468.60.gif";
+
+export default function RankableHomepage() {
+  const pageTitle = "10 Digital Systems to Make Money Online | FreebieBro";
+  const pageDescription =
+    "Discover 10 powerful digital systems for affiliate marketing, SEO, email marketing, content, social media, video, and more. Start building online income with proven tools and strategies.";
+  const canonicalUrl = "https://go.freebiebro.org/";
 
 export default function RankableHomepage() {
   const pageTitle = "10 Digital Systems to Make Money Online | FreebieBro";
@@ -113,7 +121,23 @@ export default function RankableHomepage() {
     "Discover 10 powerful digital systems for affiliate marketing, SEO, email marketing, content, social media, video, and more. Start building online income with proven tools and strategies.";
   const canonicalUrl = "https://go.freebiebro.org/";
 
->>>>>>> a8925ed (Fix Home.jsx conflict markers cleanly)
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  url: canonicalUrl,
+  description: pageDescription,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: products.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: product.name,
+      url: trackingLink(product.slug),
+      description: product.description,
+    })),
+  },
+};
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
