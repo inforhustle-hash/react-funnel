@@ -41,7 +41,6 @@ export default function App() {
   return (
     <div className="landing-page">
       <div className="landing-container">
-
         <h1>
           Steal These 10 Done-For-You Systems
           <br />
@@ -62,7 +61,6 @@ export default function App() {
           Instant access • No experience needed
         </p>
 
-        {/* 🔥 SIDE-BY-SIDE BANNERS */}
         <div
           style={{
             display: "flex",
@@ -72,20 +70,20 @@ export default function App() {
             marginTop: "30px",
           }}
         >
-
           {/* LeadsLeap */}
           <div style={{ textAlign: "center" }}>
             <a href={bannerTrackUrl} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd65265e911.png"
                 alt="LeadsLeap"
+                className="pulse"
                 onMouseEnter={() => setHoverMain(true)}
                 onMouseLeave={() => setHoverMain(false)}
                 style={{
                   maxWidth: "300px",
                   width: "100%",
                   borderRadius: "10px",
-                  transform: hoverMain ? "scale(1.05)" : "scale(1)",
+                  transform: hoverMain ? "scale(1.08)" : "",
                   transition: "0.2s",
                   boxShadow: hoverMain ? "0 10px 25px rgba(0,0,0,0.4)" : "none",
                   cursor: "pointer",
@@ -93,7 +91,7 @@ export default function App() {
               />
             </a>
             <p style={{ marginTop: "6px", fontSize: "13px", opacity: 0.8 }}>
-              👆 Click the banner above to get started
+              👆 Click the banner above
             </p>
           </div>
 
@@ -103,13 +101,14 @@ export default function App() {
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd618e5daee.png"
                 alt="Extra Tools"
+                className="pulse"
                 onMouseEnter={() => setHoverExtra(true)}
                 onMouseLeave={() => setHoverExtra(false)}
                 style={{
                   maxWidth: "300px",
                   width: "100%",
                   borderRadius: "10px",
-                  transform: hoverExtra ? "scale(1.05)" : "scale(1)",
+                  transform: hoverExtra ? "scale(1.08)" : "",
                   transition: "0.2s",
                   boxShadow: hoverExtra ? "0 10px 25px rgba(0,0,0,0.4)" : "none",
                   cursor: "pointer",
@@ -117,7 +116,7 @@ export default function App() {
               />
             </a>
             <p style={{ marginTop: "6px", fontSize: "13px", opacity: 0.8 }}>
-              👆 Click the banner above to get started
+              👆 Click the banner above
             </p>
           </div>
 
@@ -127,13 +126,14 @@ export default function App() {
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd6a322d78c.png"
                 alt="Herculist"
+                className="pulse"
                 onMouseEnter={() => setHoverHerc(true)}
                 onMouseLeave={() => setHoverHerc(false)}
                 style={{
                   maxWidth: "300px",
                   width: "100%",
                   borderRadius: "10px",
-                  transform: hoverHerc ? "scale(1.05)" : "scale(1)",
+                  transform: hoverHerc ? "scale(1.08)" : "",
                   transition: "0.2s",
                   boxShadow: hoverHerc ? "0 10px 25px rgba(0,0,0,0.4)" : "none",
                   cursor: "pointer",
@@ -141,12 +141,10 @@ export default function App() {
               />
             </a>
             <p style={{ marginTop: "6px", fontSize: "13px", opacity: 0.8 }}>
-              👆 Click the banner above to get started
+              👆 Click the banner above
             </p>
           </div>
-
         </div>
-
       </div>
     </div>
   );
