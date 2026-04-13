@@ -66,7 +66,7 @@ export default function App() {
             rel="noopener noreferrer"
           >
             <img
-              src="https://imgallery.llsvr.com/theojm.69d5cbe0d1953.png"
+              src="https://imgallery.llsvr.com/theojm.69dd65265e911.png"
               alt="LeadsLeap"
               onMouseEnter={() => setHoverMain(true)}
               onMouseLeave={() => setHoverMain(false)}
