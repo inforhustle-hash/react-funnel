@@ -98,6 +98,7 @@ const products = [
 ];
 
 const getSrc = () => {
+  if (typeof window === "undefined") return "homepage";
   const params = new URLSearchParams(window.location.search);
   const srcFromUrl = params.get("src");
   const savedSrc = localStorage.getItem("funnel_src");
@@ -124,8 +125,8 @@ const extraProductsTrackedUrl = () => {
   return `https://n8n-production-01ac.up.railway.app/webhook/t?src=${src}&offer=extra-products&url=${url}`;
 };
 
-const leadsLeapBanner = "/products/LeadsLeap.png";
-const extraProductsBanner = "/products/Extra money-making tools with golden glow.png";
+const leadsLeapBanner = "https://imgallery.llsvr.com/theojm.69d5cbe0d1953.png";
+const extraProductsBanner = "https://imgallery.llsvr.com/theojm.69dd3c9499246.png";
 
 export default function RankableHomepage() {
   const pageTitle = "10 Digital Systems to Make Money Online | FreebieBro";
@@ -231,14 +232,14 @@ export default function RankableHomepage() {
           <section className="mx-auto max-w-4xl">
             <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur">
               <h2 className="text-2xl font-bold md:text-3xl">Why These Digital Marketing Systems Work</h2>
-              <p className="mt-4 leading-8 text-slate-300">
+              <p className="mt-4 text-slate-300 leading-8">
                 If you are searching for the best way to make money online, the biggest mistake is trying random
                 tactics without a real plan. This homepage is built around 10 connected digital systems that help
                 with traffic generation, lead capture, conversions, and long-term growth. Whether you want affiliate
                 marketing for beginners, passive income ideas, free traffic from Google, or better email follow-up,
                 these systems give you a direct next step.
               </p>
-              <p className="mt-4 leading-8 text-slate-300">
+              <p className="mt-4 text-slate-300 leading-8">
                 Start with one system. Learn it. Apply it. Then stack the next one. That is how real online business
                 growth happens.
               </p>
@@ -249,7 +250,7 @@ export default function RankableHomepage() {
             <div className="mb-8 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-300">All Products</p>
               <h2 className="mt-3 text-3xl font-black md:text-5xl">Choose the System That Fits Your Goal</h2>
-              <p className="mx-auto mt-4 max-w-3xl leading-8 text-slate-300">
+              <p className="mx-auto mt-4 max-w-3xl text-slate-300 leading-8">
                 Each product below targets a different part of online business growth, from free traffic and SEO to
                 email marketing, content creation, social media, sales, and video.
               </p>
@@ -345,11 +346,10 @@ export default function RankableHomepage() {
             <div className="rounded-[2rem] border border-cyan-400/20 bg-gradient-to-r from-cyan-400/10 via-slate-900 to-orange-400/10 p-8 text-center md:p-12">
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Start Here</p>
               <h2 className="mt-3 text-3xl font-black md:text-5xl">Ready to Build Your Online Income?</h2>
-              <p className="mx-auto mt-4 max-w-2xl leading-8 text-slate-300">
+              <p className="mx-auto mt-4 max-w-2xl text-slate-300 leading-8">
                 Start with the Affiliate System first, then stack content, email, SEO, and video as you grow.
                 One strong system can change everything.
               </p>
-
               <a
                 href={trackingLink("affiliate-system")}
                 className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-base font-bold text-slate-950 transition hover:-translate-y-0.5"
@@ -359,7 +359,11 @@ export default function RankableHomepage() {
               </a>
 
               <div style={{ marginTop: "30px", textAlign: "center" }}>
-                <a href={leadsLeapTrackedUrl()} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={leadsLeapTrackedUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img
                     src={leadsLeapBanner}
                     alt="LeadsLeap Banner"
@@ -368,7 +372,11 @@ export default function RankableHomepage() {
                 </a>
 
                 <div style={{ marginTop: "20px" }}>
-                  <a href={extraProductsTrackedUrl()} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={extraProductsTrackedUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img
                       src={extraProductsBanner}
                       alt="Check out these exciting products"
