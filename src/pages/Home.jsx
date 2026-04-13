@@ -126,7 +126,7 @@ const extraProductsTrackedUrl = () => {
 };
 
 const leadsLeapBanner = "https://imgallery.llsvr.com/theojm.69d5cbe0d1953.png";
-const extraProductsBanner = "https://imgallery.llsvr.com/theojm.69dd3c9499246.png";
+const extraProductsBanner = "https://imgallery.llsvr.com/theojm.69dd41eda403c.png";
 
 export default function RankableHomepage() {
   const pageTitle = "10 Digital Systems to Make Money Online | FreebieBro";
