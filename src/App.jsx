@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 export default function App() {
   const params = new URLSearchParams(window.location.search);
   const src = params.get("src") || "direct";
-  const [hover, setHover] = useState(false);
+
+  const [hoverMain, setHoverMain] = useState(false);
+  const [hoverExtra, setHoverExtra] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("funnel_src", src);
@@ -23,6 +25,13 @@ export default function App() {
     `?src=${encodeURIComponent(src)}` +
     `&offer=${encodeURIComponent("leadsleap-banner")}` +
     `&url=${encodeURIComponent(bannerFinalUrl)}`;
+
+  const extraBannerFinalUrl = "https://rotatelinkpro.com/Theojm/moneymakertools/";
+  const extraBannerTrackUrl =
+    `https://n8n-production-01ac.up.railway.app/webhook/t` +
+    `?src=${encodeURIComponent(src)}` +
+    `&offer=${encodeURIComponent("extra-products")}` +
+    `&url=${encodeURIComponent(extraBannerFinalUrl)}`;
 
   return (
     <div className="landing-page">
@@ -49,6 +58,7 @@ export default function App() {
           Instant access • No experience needed
         </p>
 
+        {/* LeadsLeap Banner */}
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <a
             href={bannerTrackUrl}
@@ -58,19 +68,49 @@ export default function App() {
             <img
               src="https://imgallery.llsvr.com/theojm.69d5cbe0d1953.png"
               alt="LeadsLeap"
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
+              onMouseEnter={() => setHoverMain(true)}
+              onMouseLeave={() => setHoverMain(false)}
               style={{
                 maxWidth: "468px",
                 width: "100%",
                 display: "block",
                 margin: "0 auto",
                 transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                transform: hover ? "scale(1.05)" : "scale(1)",
-                boxShadow: hover
+                transform: hoverMain ? "scale(1.05)" : "scale(1)",
+                boxShadow: hoverMain
                   ? "0 10px 25px rgba(0,0,0,0.4)"
                   : "none",
                 cursor: "pointer",
+                borderRadius: "10px",
+              }}
+            />
+          </a>
+        </div>
+
+        {/* Extra Money Tools Banner */}
+        <div style={{ marginTop: "25px", textAlign: "center" }}>
+          <a
+            href={extraBannerTrackUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://imgallery.llsvr.com/theojm.69dd41eda403c.png"
+              alt="Extra Money Tools"
+              onMouseEnter={() => setHoverExtra(true)}
+              onMouseLeave={() => setHoverExtra(false)}
+              style={{
+                maxWidth: "468px",
+                width: "100%",
+                display: "block",
+                margin: "0 auto",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                transform: hoverExtra ? "scale(1.05)" : "scale(1)",
+                boxShadow: hoverExtra
+                  ? "0 10px 25px rgba(0,0,0,0.4)"
+                  : "none",
+                cursor: "pointer",
+                borderRadius: "10px",
               }}
             />
           </a>
