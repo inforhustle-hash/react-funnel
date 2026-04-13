@@ -95,7 +95,7 @@ export default function App() {
             rel="noopener noreferrer"
           >
             <img
-              src="https://imgallery.llsvr.com/theojm.69dd41eda403c.png"
+              src="https://imgallery.llsvr.com/theojm.69dd618e5daee.png"
               alt="Extra Money Tools"
               onMouseEnter={() => setHoverExtra(true)}
               onMouseLeave={() => setHoverExtra(false)}
