@@ -129,3 +129,28 @@
     font-size: 1.1rem;
   }
 }
+.cta:hover {
+  opacity: 0.95;
+}
+
+.trust {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #8a94a6;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 1.8s ease-in-out infinite;
+}
