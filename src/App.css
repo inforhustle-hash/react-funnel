@@ -1,77 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, #070a12 0%, #0b0f19 100%);
+  background: linear-gradient(135deg, #0b1020, #111827);
   color: #ffffff;
 }
 
-.landing-page {
+.app {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  box-sizing: border-box;
 }
 
-.landing-container {
-  max-width: 700px;
+.hero {
   width: 100%;
-  text-align: center;
-  margin: 0 auto;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
 }
 
-h1 {
-  font-size: 44px;
-  line-height: 1.2;
-  margin-bottom: 18px;
+.hero-left,
+.hero-right {
+  width: 100%;
 }
 
-.sub {
-  font-size: 18px;
-  color: #b8c0d4;
-  margin-bottom: 18px;
+.video-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  background: #000;
 }
 
-.bonus {
-  margin-bottom: 20px;
-  font-size: 16px;
-  color: #00ffcc;
-  font-weight: bold;
-}
-
-.cta {
-  display: inline-block;
-  padding: 16px 32px;
-  background: #00ffcc;
-  color: #000;
-  text-decoration: none;
+.kicker {
+  color: #38bdf8;
+  font-size: 14px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.hero-right h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
+
+.subtext {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #d1d5db;
+  margin-bottom: 28px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #22c55e;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 32px;
   border-radius: 12px;
   font-size: 18px;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 30px rgba(34, 197, 94, 0.35);
 }
 
-.cta:hover {
-  opacity: 0.95;
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(34, 197, 94, 0.45);
 }
 
-.trust {
+.small-text {
   margin-top: 14px;
-  font-size: 12px;
-  color: #8a94a6;
+  color: #9ca3af;
+  font-size: 14px;
 }
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 32px;
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-}
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.04); }
-  100% { transform: scale(1); }
-}
 
-.pulse {
-  animation: pulse 2.2s ease-in-out infinite;
+  .hero-right h1 {
+    font-size: 36px;
+  }
+
+  .subtext {
+    font-size: 16px;
+  }
 }
