@@ -2,49 +2,130 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center; /* 🔥 THIS PUSHES IT DOWN CENTER */
-  padding: 40px 20px;
+  align-items: center;
+  padding: 60px 20px;
+  background: linear-gradient(90deg, #020617 0%, #000814 45%, #0a0618 100%);
 }
 
 .landing-container {
-  max-width: 1200px;
   width: 100%;
+  max-width: 1240px;
 }
 
-/* 🔥 HERO LAYOUT */
 .hero-row {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 48px;
   align-items: center;
+  margin-top: 20px;
 }
 
-/* VIDEO */
 .video-box {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  background: #000;
 }
 
 .video-box iframe {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
-/* TEXT SIDE */
 .hero-text {
-  text-align: left;
+  text-align: center;
+  color: #fff;
 }
 
-/* MOBILE FIX */
-@media (max-width: 900px) {
+.hero-text h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin: 0 0 22px;
+  font-weight: 800;
+}
+
+.sub {
+  font-size: 1.45rem;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.bonus {
+  font-size: 1.25rem;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.cta {
+  display: inline-block;
+  margin: 10px 0 16px;
+  padding: 16px 34px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffd54a 0%, #ff9f1c 100%);
+  color: #111;
+  text-decoration: none;
+  font-size: 1.35rem;
+  font-weight: 800;
+  box-shadow: 0 10px 25px rgba(255, 166, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(255, 166, 0, 0.45);
+}
+
+.trust {
+  font-size: 1.2rem;
+  margin-top: 8px;
+  color: #ffffff;
+}
+
+.banner-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 70px;
+}
+
+.banner-card {
+  text-align: center;
+}
+
+.banner-card img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.banner-card p {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.85;
+  color: #fff;
+}
+
+@media (max-width: 980px) {
   .hero-row {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
-  .hero-text {
-    text-align: center;
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .sub {
+    font-size: 1.1rem;
+  }
+
+  .cta {
+    font-size: 1.1rem;
   }
 }
