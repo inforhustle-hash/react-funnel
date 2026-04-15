@@ -38,28 +38,88 @@ export default function App() {
     `&offer=herculist-banner` +
     `&url=${encodeURIComponent("http://www.herculist.com/members/index.cgi?Theojm")}`;
 
+  const videoEmbedUrl = "https://www.youtube.com/embed/OeoRjcoKPWU";
+
   return (
     <div className="landing-page">
       <div className="landing-container">
-        <h1>
-          Steal These 10 Done-For-You Systems
-          <br />
-          Already Making Sales Right Now
-        </h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "stretch",
+            gap: "30px",
+            flexWrap: "wrap",
+            marginBottom: "30px",
+          }}
+        >
+          {/* LEFT SIDE VIDEO */}
+          <div
+            style={{
+              flex: "1 1 420px",
+              maxWidth: "520px",
+              minWidth: "300px",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                paddingBottom: "56.25%",
+                height: 0,
+                overflow: "hidden",
+                borderRadius: "18px",
+                boxShadow: "0 12px 30px rgba(0,0,0,0.35)",
+                background: "#000",
+              }}
+            >
+              <iframe
+                src={videoEmbedUrl}
+                title="Done For You Systems Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                }}
+              />
+            </div>
+          </div>
 
-        <p className="sub">
-          No building. No guessing. Just plug in and go.
-        </p>
+          {/* RIGHT SIDE HERO */}
+          <div
+            style={{
+              flex: "1 1 420px",
+              maxWidth: "620px",
+              minWidth: "300px",
+              textAlign: "center",
+            }}
+          >
+            <h1>
+              Steal These 10 Done-For-You Systems
+              <br />
+              Already Making Sales Right Now
+            </h1>
 
-        <div className="bonus">🎁 Free Bonus Included</div>
+            <p className="sub">
+              No building. No guessing. Just plug in and go.
+            </p>
 
-        <a className="cta" href={ctaTrackUrl}>
-          Get Instant Access
-        </a>
+            <div className="bonus">🎁 Free Bonus Included</div>
 
-        <p className="trust" style={{ marginBottom: "40px" }}>
-          Instant access • No experience needed
-        </p>
+            <a className="cta" href={ctaTrackUrl}>
+              Get Instant Access
+            </a>
+
+            <p className="trust" style={{ marginBottom: "10px" }}>
+              Instant access • No experience needed
+            </p>
+          </div>
+        </div>
 
         <div
           style={{
@@ -83,7 +143,7 @@ export default function App() {
                   maxWidth: "300px",
                   width: "100%",
                   borderRadius: "10px",
-                  transform: hoverMain ? "scale(1.08)" : "",
+                  transform: hoverMain ? "scale(1.08)" : "scale(1)",
                   transition: "0.2s",
                   boxShadow: hoverMain ? "0 10px 25px rgba(0,0,0,0.4)" : "none",
                   cursor: "pointer",
@@ -108,7 +168,7 @@ export default function App() {
                   maxWidth: "300px",
                   width: "100%",
                   borderRadius: "10px",
-                  transform: hoverExtra ? "scale(1.08)" : "",
+                  transform: hoverExtra ? "scale(1.08)" : "scale(1)",
                   transition: "0.2s",
                   boxShadow: hoverExtra ? "0 10px 25px rgba(0,0,0,0.4)" : "none",
                   cursor: "pointer",
@@ -133,7 +193,7 @@ export default function App() {
                   maxWidth: "300px",
                   width: "100%",
                   borderRadius: "10px",
-                  transform: hoverHerc ? "scale(1.08)" : "",
+                  transform: hoverHerc ? "scale(1.08)" : "scale(1)",
                   transition: "0.2s",
                   boxShadow: hoverHerc ? "0 10px 25px rgba(0,0,0,0.4)" : "none",
                   cursor: "pointer",
