@@ -44,10 +44,13 @@ export default function App() {
         <div className="hero-row">
           <div className="video-box">
             <iframe
-              src="https://youtu.be/4a3KpSfA8Wk"
-              title="Done For You Systems Video"
+              width="1335"
+              height="751"
+              src="https://www.youtube.com/embed/4a3KpSfA8Wk"
+              title="10 Done-For-You Systems That Make Money Online (No Building Needed)"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           </div>
