@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import logo from "./10 DFY system.png";
+import logo from "./logo.png"; // ✅ FIXED (rename your file)
 
 export default function App() {
   const params = new URLSearchParams(window.location.search);
