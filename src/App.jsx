@@ -1,6 +1,5 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import logo from "./logo.png"; // ✅ FIXED (rename your file)
 
 export default function App() {
   const params = new URLSearchParams(window.location.search);
@@ -42,9 +41,9 @@ export default function App() {
   return (
     <div className="landing-page">
 
-      {/* 🔥 LOGO */}
+      {/* 🔥 LOGO (SAFE VERSION) */}
       <a href={ctaTrackUrl} className="logo-container">
-        <img src={logo} alt="Logo" />
+        <img src="/logo.png" alt="Logo" />
       </a>
 
       <div className="landing-container">
