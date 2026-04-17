@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import logo from "./10 DFY system.png";
 
 export default function App() {
   const params = new URLSearchParams(window.location.search);
@@ -40,6 +41,12 @@ export default function App() {
 
   return (
     <div className="landing-page">
+
+      {/* 🔥 LOGO */}
+      <a href={ctaTrackUrl} className="logo-container">
+        <img src={logo} alt="Logo" />
+      </a>
+
       <div className="landing-container">
         <div className="hero-row">
           <div className="video-box">
