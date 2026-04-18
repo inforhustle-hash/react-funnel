@@ -46,24 +46,111 @@ export default function App() {
 
   return (
     <div className="landing-page">
-      {/* 🔥 LOGO (SAFE VERSION) */}
       <a href={ctaTrackUrl} className="logo-container">
         <img src="/logo.png" alt="Logo" />
       </a>
 
       <div className="landing-container">
         <div className="hero-row">
-          <div className="video-box">
-            <iframe
-              width="1335"
-              height="751"
-              src="https://www.youtube.com/embed/4a3KpSfA8Wk"
-              title="10 Done-For-You Systems That Make Money Online (No Building Needed)"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "28px",
+            }}
+          >
+            <div className="video-box">
+              <iframe
+                width="1335"
+                height="751"
+                src="https://www.youtube.com/embed/4a3KpSfA8Wk"
+                title="10 Done-For-You Systems That Make Money Online (No Building Needed)"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+
+            <div
+              style={{
+                background: "rgba(15, 27, 45, 0.95)",
+                border: "1px solid #1d314a",
+                borderRadius: "18px",
+                padding: "20px",
+                boxShadow: "0 14px 40px rgba(0,0,0,0.28)",
+              }}
+            >
+              <div
+                style={{
+                  textAlign: "center",
+                  marginBottom: "16px",
+                }}
+              >
+                <h2
+                  style={{
+                    fontSize: "2rem",
+                    margin: "0 0 8px",
+                    lineHeight: "1.2",
+                    color: "#fff",
+                  }}
+                >
+                  Watch the Image Generator in Action
+                </h2>
+
+                <p
+                  style={{
+                    color: "#cdd8e3",
+                    fontSize: "1rem",
+                    margin: "0",
+                  }}
+                >
+                  Helps you create graphics and image assets faster for content,
+                  promotions, and branding use.
+                </p>
+              </div>
+
+              <div className="video-box" style={{ marginBottom: "18px" }}>
+                <iframe
+                  width="1335"
+                  height="751"
+                  src="https://player.vimeo.com/video/1034664209"
+                  title="Image Generator Demo"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <a
+                  href={imageGeneratorTrackUrl}
+                  style={{
+                    display: "inline-block",
+                    background: "linear-gradient(135deg, #00c2ff, #38bdf8)",
+                    color: "#081120",
+                    padding: "14px 28px",
+                    borderRadius: "12px",
+                    textDecoration: "none",
+                    fontWeight: "700",
+                    fontSize: "1rem",
+                    boxShadow: "0 12px 30px rgba(0, 194, 255, 0.25)",
+                  }}
+                >
+                  Get Image Generator for $47
+                </a>
+
+                <p
+                  style={{
+                    marginTop: "12px",
+                    color: "#94a3b8",
+                    fontSize: "0.95rem",
+                  }}
+                >
+                  Personal use only • One-time payment
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="hero-text">
@@ -84,99 +171,6 @@ export default function App() {
             </a>
 
             <p className="trust">Instant access • No experience needed</p>
-          </div>
-        </div>
-
-        {/* 🔥 FEATURED IMAGE GENERATOR SECTION */}
-        <div
-          style={{
-            marginTop: "56px",
-            background: "rgba(15, 27, 45, 0.95)",
-            border: "1px solid #1d314a",
-            borderRadius: "20px",
-            padding: "28px",
-            boxShadow: "0 14px 40px rgba(0,0,0,0.28)",
-          }}
-        >
-          <div
-            style={{
-              textAlign: "center",
-              marginBottom: "22px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "2rem",
-                marginBottom: "10px",
-                lineHeight: "1.2",
-              }}
-            >
-              Watch the Image Generator in Action
-            </h2>
-
-            <p
-              style={{
-                color: "#cdd8e3",
-                fontSize: "1rem",
-                maxWidth: "760px",
-                margin: "0 auto 18px",
-              }}
-            >
-              Helps you create graphics and image assets faster for content,
-              promotions, and branding use.
-            </p>
-          </div>
-
-          <div
-            style={{
-              maxWidth: "900px",
-              margin: "0 auto",
-            }}
-          >
-            <div className="video-box" style={{ marginBottom: "20px" }}>
-              <iframe
-                width="1335"
-                height="751"
-                src="https://player.vimeo.com/video/1034664209"
-                title="Image Generator Demo"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-
-            <div
-              style={{
-                textAlign: "center",
-              }}
-            >
-              <a
-                href={imageGeneratorTrackUrl}
-                style={{
-                  display: "inline-block",
-                  background: "linear-gradient(135deg, #00c2ff, #38bdf8)",
-                  color: "#081120",
-                  padding: "14px 28px",
-                  borderRadius: "12px",
-                  textDecoration: "none",
-                  fontWeight: "700",
-                  fontSize: "1rem",
-                  boxShadow: "0 12px 30px rgba(0, 194, 255, 0.25)",
-                }}
-              >
-                Get Image Generator for $47
-              </a>
-
-              <p
-                style={{
-                  marginTop: "12px",
-                  color: "#94a3b8",
-                  fontSize: "0.95rem",
-                }}
-              >
-                Personal use only • One-time payment
-              </p>
-            </div>
           </div>
         </div>
 
