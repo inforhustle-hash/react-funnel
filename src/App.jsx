@@ -167,7 +167,7 @@ export default function App() {
             <div className="bonus">🎁 Free Bonus Included</div>
 
             <a className="cta" href={ctaTrackUrl}>
-            👉 Get Your First AI System Now
+            ➤ Get Your First AI System Now
             </a>
 
             <p className="trust">Instant access • No experience needed</p>
