@@ -137,7 +137,7 @@ export default function App() {
                     boxShadow: "0 12px 30px rgba(0, 194, 255, 0.25)",
                   }}
                 >
-                  Get Image Generator for $47
+                  👉 Start Using This System Now
                 </a>
 
                 <p
