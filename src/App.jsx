@@ -14,119 +14,45 @@ export default function App() {
   }, [src]);
 
   const ctaFinalUrl = `${window.location.origin}/capture.html?src=${encodeURIComponent(src)}`;
+  const ctaTrackUrl =
+    `https://n8n-production-01ac.up.railway.app/webhook/t` +
+    `?src=${encodeURIComponent(src)}` +
+    `&offer=main-cta` +
+    `&url=${encodeURIComponent(ctaFinalUrl)}`;
 
-  const bannerFinalUrl = "https://leadsleap.com/?r=theojm";
-  const extraBannerFinalUrl = "https://rotatelinkpro.com/Theojm/moneymakertools/";
-  const herculistFinalUrl = "http://www.herculist.com/members/index.cgi?Theojm";
-  const imageGeneratorFinalUrl = "https://metallfya--irc.thrivecart.com/image-generator/";
+  const bannerTrackUrl =
+    `https://n8n-production-01ac.up.railway.app/webhook/t` +
+    `?src=${encodeURIComponent(src)}` +
+    `&offer=leadsleap-banner` +
+    `&url=${encodeURIComponent("https://leadsleap.com/?r=theojm")}`;
+
+  const extraBannerTrackUrl =
+    `https://n8n-production-01ac.up.railway.app/webhook/t` +
+    `?src=${encodeURIComponent(src)}` +
+    `&offer=extra-products` +
+    `&url=${encodeURIComponent("https://rotatelinkpro.com/Theojm/moneymakertools/")}`;
+
+  const herculistTrackUrl =
+    `https://n8n-production-01ac.up.railway.app/webhook/t` +
+    `?src=${encodeURIComponent(src)}` +
+    `&offer=herculist-banner` +
+    `&url=${encodeURIComponent("http://www.herculist.com/members/index.cgi?Theojm")}`;
 
   return (
     <div className="landing-page">
-      <a href={ctaFinalUrl} className="logo-container">
-        <img src="/logo.png" alt="Logo" />
-      </a>
-
       <div className="landing-container">
         <div className="hero-row">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "28px",
-            }}
-          >
-            <div className="video-box">
-              <iframe
-                width="1335"
-                height="751"
-                src="https://www.youtube.com/embed/4a3KpSfA8Wk"
-                title="10 Done-For-You Systems That Make Money Online (No Building Needed)"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-
-            <div
-              style={{
-                background: "rgba(15, 27, 45, 0.95)",
-                border: "1px solid #1d314a",
-                borderRadius: "18px",
-                padding: "20px",
-                boxShadow: "0 14px 40px rgba(0,0,0,0.28)",
-              }}
-            >
-              <div
-                style={{
-                  textAlign: "center",
-                  marginBottom: "16px",
-                }}
-              >
-                <h2
-                  style={{
-                    fontSize: "2rem",
-                    margin: "0 0 8px",
-                    lineHeight: "1.2",
-                    color: "#fff",
-                  }}
-                >
-                  Watch the Image Generator in Action
-                </h2>
-
-                <p
-                  style={{
-                    color: "#cdd8e3",
-                    fontSize: "1rem",
-                    margin: "0",
-                  }}
-                >
-                  Helps you create graphics and image assets faster for content,
-                  promotions, and branding use.
-                </p>
-              </div>
-
-              <div className="video-box" style={{ marginBottom: "18px" }}>
-                <iframe
-                  width="1335"
-                  height="751"
-                  src="https://player.vimeo.com/video/1034664209"
-                  title="Image Generator Demo"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-
-              <div style={{ textAlign: "center" }}>
-                <a
-                  href={imageGeneratorFinalUrl}
-                  style={{
-                    display: "inline-block",
-                    background: "linear-gradient(135deg, #00c2ff, #38bdf8)",
-                    color: "#081120",
-                    padding: "14px 28px",
-                    borderRadius: "12px",
-                    textDecoration: "none",
-                    fontWeight: "700",
-                    fontSize: "1rem",
-                    boxShadow: "0 12px 30px rgba(0, 194, 255, 0.25)",
-                  }}
-                >
-                  👉 Get This System for $47
-                </a>
-
-                <p
-                  style={{
-                    marginTop: "12px",
-                    color: "#94a3b8",
-                    fontSize: "0.95rem",
-                  }}
-                >
-                  Personal use • One-time payment • Instant access
-                </p>
-              </div>
-            </div>
+          <div className="video-box">
+            <iframe
+              width="1335"
+              height="751"
+              src="https://www.youtube.com/embed/4a3KpSfA8Wk"
+              title="10 Done-For-You Systems That Make Money Online (No Building Needed)"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </div>
 
           <div className="hero-text">
@@ -137,13 +63,13 @@ export default function App() {
             </h1>
 
             <p className="sub">
-              Choose the system you want. Watch the demo. Start using it today.
+              No building. No guessing. Just plug in and go.
             </p>
 
             <div className="bonus">🎁 Free Bonus Included</div>
 
-            <a className="cta" href={ctaFinalUrl}>
-              ➤ Get Your First AI System Now
+            <a className="cta" href={ctaTrackUrl}>
+              Get Instant Access
             </a>
 
             <p className="trust">Instant access • No experience needed</p>
@@ -152,7 +78,7 @@ export default function App() {
 
         <div className="banner-row">
           <div className="banner-card">
-            <a href={bannerFinalUrl} target="_blank" rel="noopener noreferrer">
+            <a href={bannerTrackUrl} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd65265e911.png"
                 alt="LeadsLeap"
@@ -169,7 +95,7 @@ export default function App() {
           </div>
 
           <div className="banner-card">
-            <a href={extraBannerFinalUrl} target="_blank" rel="noopener noreferrer">
+            <a href={extraBannerTrackUrl} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd618e5daee.png"
                 alt="Extra Tools"
@@ -186,7 +112,7 @@ export default function App() {
           </div>
 
           <div className="banner-card">
-            <a href={herculistFinalUrl} target="_blank" rel="noopener noreferrer">
+            <a href={herculistTrackUrl} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd6a322d78c.png"
                 alt="Herculist"
