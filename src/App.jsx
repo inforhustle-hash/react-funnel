@@ -147,7 +147,7 @@ export default function App() {
                     fontSize: "0.95rem",
                   }}
                 >
-                  Personal use only • One-time payment
+                 Personal use • One-time payment • Instant access
                 </p>
               </div>
             </div>
