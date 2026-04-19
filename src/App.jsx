@@ -161,7 +161,7 @@ export default function App() {
             </h1>
 
             <p className="sub">
-              No building. No guessing. Just plug in and go.
+              Choose the system you want. Watch the demo. Start using it today.
             </p>
 
             <div className="bonus">🎁 Free Bonus Included</div>
