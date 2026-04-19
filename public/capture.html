@@ -162,7 +162,7 @@
     </ul>
 
     <form id="leadForm" method="post" action="https://www.sendsteed.com/subscribe/">
-      <input id="emailField" name="e125084" required type="text" placeholder="your@email.com">
+      <input id="emailField" name="e125084" required type="email" placeholder="your@email.com">
       <input id="nameField" name="n125084" required type="text" placeholder="Name">
       <input type="hidden" name="lllid" value="125084">
       <input type="hidden" name="lluid" value="theojm">
@@ -195,9 +195,11 @@
 
       let submitted = false;
 
-      form.addEventListener("submit", function () {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
         if (submitted) {
-          return false;
+          return;
         }
 
         submitted = true;
@@ -242,6 +244,10 @@
         } catch (err) {
           console.error("Lead log failed", err);
         }
+
+        setTimeout(function () {
+          form.submit();
+        }, 300);
       });
     })();
   </script>
