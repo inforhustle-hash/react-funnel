@@ -137,7 +137,7 @@ export default function App() {
                     boxShadow: "0 12px 30px rgba(0, 194, 255, 0.25)",
                   }}
                 >
-                  👉 Start Creating Images in Minutes
+                  👉 Get This System for $47
                 </a>
 
                 <p
