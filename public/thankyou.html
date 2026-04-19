@@ -16,7 +16,7 @@ body {
 }
 
 .wrap {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
@@ -28,8 +28,18 @@ h1 {
 
 .sub {
   color: #b8c0d4;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
   font-size: 18px;
+}
+
+.steps {
+  background: #0d1733;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 30px;
+  color: #d7def0;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 .bonus-box {
@@ -49,6 +59,7 @@ h1 {
 .bonus-text {
   color: #c3cbe0;
   margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .bonus-btn {
@@ -82,6 +93,7 @@ h1 {
   color: #b8c0d4;
   font-size: 14px;
   margin-bottom: 16px;
+  line-height: 1.6;
 }
 
 .btn {
@@ -94,6 +106,13 @@ h1 {
   border-radius: 10px;
   width: 100%;
   box-sizing: border-box;
+}
+
+.note {
+  margin-top: 30px;
+  color: #8ea0c6;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 @media (min-width: 768px) {
@@ -114,10 +133,16 @@ h1 {
   <h1>Your Access Is Ready</h1>
   <p class="sub">Start with your free bonus, then unlock any system below.</p>
 
+  <div class="steps">
+    <strong>Step 1:</strong> Check your email for follow-up details.<br>
+    <strong>Step 2:</strong> Open your free bonus first.<br>
+    <strong>Step 3:</strong> Pick the system you want to start with below.
+  </div>
+
   <div class="bonus-box">
     <div class="bonus-title">🎁 Your Free Bonus</div>
     <div class="bonus-text">
-      Open your bonus first — this will help you get results faster.
+      Open your bonus first — this will help you get results faster and show you the best next step before you choose a system below.
     </div>
     <a class="bonus-btn" data-offer="bonus" data-url="https://llpgpro.com/yfc28yps/">Access Your Bonus</a>
   </div>
@@ -184,10 +209,19 @@ h1 {
     </div>
   </div>
 
+  <div class="note">
+    Start with the free bonus first, then choose the system that matches what you want to build next.
+  </div>
+
 </div>
 
 <script>
   const params = new URLSearchParams(window.location.search);
+
+  if (params.get("src")) {
+    localStorage.setItem("funnel_src", params.get("src"));
+  }
+
   const src = params.get("src") || localStorage.getItem("funnel_src") || "direct";
 
   document.querySelectorAll("[data-offer]").forEach(link => {
