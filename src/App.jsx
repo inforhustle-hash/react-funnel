@@ -14,39 +14,15 @@ export default function App() {
   }, [src]);
 
   const ctaFinalUrl = `${window.location.origin}/capture.html?src=${encodeURIComponent(src)}`;
-  const ctaTrackUrl =
-    `https://n8n-production-01ac.up.railway.app/webhook/t` +
-    `?src=${encodeURIComponent(src)}` +
-    `&offer=main-cta` +
-    `&url=${encodeURIComponent(ctaFinalUrl)}`;
 
-  const bannerTrackUrl =
-    `https://n8n-production-01ac.up.railway.app/webhook/t` +
-    `?src=${encodeURIComponent(src)}` +
-    `&offer=leadsleap-banner` +
-    `&url=${encodeURIComponent("https://leadsleap.com/?r=theojm")}`;
-
-  const extraBannerTrackUrl =
-    `https://n8n-production-01ac.up.railway.app/webhook/t` +
-    `?src=${encodeURIComponent(src)}` +
-    `&offer=extra-products` +
-    `&url=${encodeURIComponent("https://rotatelinkpro.com/Theojm/moneymakertools/")}`;
-
-  const herculistTrackUrl =
-    `https://n8n-production-01ac.up.railway.app/webhook/t` +
-    `?src=${encodeURIComponent(src)}` +
-    `&offer=herculist-banner` +
-    `&url=${encodeURIComponent("http://www.herculist.com/members/index.cgi?Theojm")}`;
-
-  const imageGeneratorTrackUrl =
-    `https://n8n-production-01ac.up.railway.app/webhook/t` +
-    `?src=${encodeURIComponent(src)}` +
-    `&offer=image-generator` +
-    `&url=${encodeURIComponent("https://metallfya--irc.thrivecart.com/image-generator/")}`;
+  const bannerFinalUrl = "https://leadsleap.com/?r=theojm";
+  const extraBannerFinalUrl = "https://rotatelinkpro.com/Theojm/moneymakertools/";
+  const herculistFinalUrl = "http://www.herculist.com/members/index.cgi?Theojm";
+  const imageGeneratorFinalUrl = "https://metallfya--irc.thrivecart.com/image-generator/";
 
   return (
     <div className="landing-page">
-      <a href={ctaTrackUrl} className="logo-container">
+      <a href={ctaFinalUrl} className="logo-container">
         <img src="/logo.png" alt="Logo" />
       </a>
 
@@ -124,7 +100,7 @@ export default function App() {
 
               <div style={{ textAlign: "center" }}>
                 <a
-                  href={imageGeneratorTrackUrl}
+                  href={imageGeneratorFinalUrl}
                   style={{
                     display: "inline-block",
                     background: "linear-gradient(135deg, #00c2ff, #38bdf8)",
@@ -147,7 +123,7 @@ export default function App() {
                     fontSize: "0.95rem",
                   }}
                 >
-                 Personal use • One-time payment • Instant access
+                  Personal use • One-time payment • Instant access
                 </p>
               </div>
             </div>
@@ -166,8 +142,8 @@ export default function App() {
 
             <div className="bonus">🎁 Free Bonus Included</div>
 
-            <a className="cta" href={ctaTrackUrl}>
-            ➤ Get Your First AI System Now
+            <a className="cta" href={ctaFinalUrl}>
+              ➤ Get Your First AI System Now
             </a>
 
             <p className="trust">Instant access • No experience needed</p>
@@ -176,7 +152,7 @@ export default function App() {
 
         <div className="banner-row">
           <div className="banner-card">
-            <a href={bannerTrackUrl} target="_blank" rel="noopener noreferrer">
+            <a href={bannerFinalUrl} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd65265e911.png"
                 alt="LeadsLeap"
@@ -193,7 +169,7 @@ export default function App() {
           </div>
 
           <div className="banner-card">
-            <a href={extraBannerTrackUrl} target="_blank" rel="noopener noreferrer">
+            <a href={extraBannerFinalUrl} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd618e5daee.png"
                 alt="Extra Tools"
@@ -210,7 +186,7 @@ export default function App() {
           </div>
 
           <div className="banner-card">
-            <a href={herculistTrackUrl} target="_blank" rel="noopener noreferrer">
+            <a href={herculistFinalUrl} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://imgallery.llsvr.com/theojm.69dd6a322d78c.png"
                 alt="Herculist"
