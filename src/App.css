@@ -85,73 +85,6 @@
   color: #ffffff;
 }
 
-/* 🔥 NEW FEATURED TOOL SECTION */
-.featured-tool-section {
-  margin-top: 56px;
-  background: rgba(15, 27, 45, 0.95);
-  border: 1px solid #1d314a;
-  border-radius: 20px;
-  padding: 28px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
-}
-
-.featured-tool-heading {
-  text-align: center;
-  margin-bottom: 22px;
-}
-
-.featured-tool-heading h2 {
-  font-size: 2rem;
-  margin: 0 0 10px;
-  line-height: 1.2;
-  color: #ffffff;
-}
-
-.featured-tool-heading p {
-  color: #cdd8e3;
-  font-size: 1rem;
-  max-width: 760px;
-  margin: 0 auto 18px;
-}
-
-.featured-tool-video-wrap {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.featured-tool-video-wrap .video-box {
-  margin-bottom: 20px;
-}
-
-.featured-tool-cta-wrap {
-  text-align: center;
-}
-
-.featured-tool-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, #00c2ff, #38bdf8);
-  color: #081120;
-  padding: 14px 28px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1rem;
-  box-shadow: 0 12px 30px rgba(0, 194, 255, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-}
-
-.featured-tool-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 34px rgba(0, 194, 255, 0.35);
-  opacity: 0.96;
-}
-
-.featured-tool-note {
-  margin-top: 12px;
-  color: #94a3b8;
-  font-size: 0.95rem;
-}
-
 .banner-row {
   display: flex;
   justify-content: center;
@@ -206,31 +139,13 @@
   .cta {
     font-size: 1.1rem;
   }
-
-  .featured-tool-heading h2 {
-    font-size: 1.6rem;
-  }
-
-  .featured-tool-section {
-    padding: 22px;
-  }
 }
 
 @media (max-width: 600px) {
   .hero-text h1 {
     font-size: 32px;
   }
-
-  .featured-tool-heading h2 {
-    font-size: 1.35rem;
-  }
-
-  .featured-tool-btn {
-    width: 100%;
-    max-width: 320px;
-  }
 }
-
 /* 🔥 LOGO TOP LEFT */
 .logo-container {
   position: absolute;
@@ -267,33 +182,4 @@
     transform: scale(1);
     filter: drop-shadow(0 0 5px rgba(0,255,204,0.4));
   }
-}
-
-.setup-box {
-  margin: 26px auto 0;
-  max-width: 940px;
-  background: linear-gradient(135deg, rgba(17, 33, 58, 0.98), rgba(8, 17, 32, 0.98));
-  border: 1px solid #244261;
-  border-radius: 20px;
-  padding: 22px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-  text-align: center;
-}
-
-.setup-icon {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-.setup-title {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #00c2ff;
-  margin: 0 0 8px;
-}
-
-.setup-text {
-  color: #d6e4f2;
-  font-size: 1rem;
-  margin: 0;
 }
