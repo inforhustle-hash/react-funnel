@@ -163,15 +163,15 @@
       <li><span>✓</span> No experience needed to start</li>
     </ul>
 
-    <<form method="post" action="https://www.sendsteed.com/subscribe/">
-	<input name="e125084" required="" type="text" placeholder="your@email.com">
-	<input name="n125084" required="" type="text" placeholder="Name">
-	<input type="hidden" name="lllid" value="125084">
-	<input type="hidden" name="lluid" value="theojm">
-	<input type="hidden" name="redirect" value="">
-	<input type="hidden" name="source" value="">
-	<button type="submit">Submit</button>
-</form>
+    <form id="leadForm" method="post" action="https://www.sendsteed.com/subscribe/">
+      <input id="emailField" name="e125084" required type="text" placeholder="your@email.com" />
+      <input id="nameField" name="n125084" required type="text" placeholder="Name" />
+
+      <input type="hidden" name="lllid" value="125084" />
+      <input type="hidden" name="lluid" value="theojm" />
+      <input type="hidden" name="redirect" id="redirectField" value="" />
+      <input type="hidden" name="source" id="sourceField" value="" />
+
       <button type="submit" id="submitBtn">Unlock Instant Access</button>
     </form>
 
@@ -205,7 +205,7 @@
         src: src,
         name: (document.getElementById("nameField").value || "").trim(),
         email: (document.getElementById("emailField").value || "").trim(),
-        listId: "120697",
+        listId: "125084",
         source: "sendsteed",
         url: window.location.pathname + window.location.search,
         ip: "",
