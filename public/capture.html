@@ -154,7 +154,6 @@
       <li><span>✓</span> No experience needed to start</li>
     </ul>
 
-    <!-- SendSteed submit stays the same -->
     <form id="leadForm" method="post" action="https://www.sendsteed.com/subscribe/">
       <input id="nameField" name="n120697" required type="text" placeholder="Enter your name" />
       <input id="emailField" name="e120697" required type="email" placeholder="Enter your best email" />
@@ -172,19 +171,7 @@
   </div>
 
   <script>
-    // HARD-SET WEBHOOKS (NO placeholders)
     const N8N_LEADLOG_WEBHOOK = "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
-    const N8N_TRACK_BASE = "https://n8n-production-01ac.up.railway.app/webhook/t";
-
-    // helper (matches: .../webhook/t?src=SOURCE&offer=OFFER&url=ENCODED_URL)
-    function buildTrackUrl(src, offer, url) {
-      return (
-        N8N_TRACK_BASE +
-        "?src=" + encodeURIComponent(src || "direct") +
-        "&offer=" + encodeURIComponent(offer || "offer") +
-        "&url=" + encodeURIComponent(url || "")
-      );
-    }
 
     const params = new URLSearchParams(window.location.search);
     const src = params.get("src") || localStorage.getItem("funnel_src") || "direct";
@@ -196,17 +183,20 @@
 
     let leadSent = false;
 
-    document.getElementById("leadForm").addEventListener("submit", function () {
+    document.getElementById("leadForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
       if (leadSent) return;
       leadSent = true;
 
+      const form = this;
       const btn = document.getElementById("submitBtn");
       if (btn) btn.disabled = true;
 
       const leadData = {
         src: src,
-        name: (document.getElementById("nameField").value || "").trim(),
-        email: (document.getElementById("emailField").value || "").trim(),
+        name: document.getElementById("nameField").value.trim(),
+        email: document.getElementById("emailField").value.trim(),
         listId: "120697",
         source: "sendsteed",
         url: window.location.pathname + window.location.search,
@@ -214,30 +204,20 @@
         userAgent: navigator.userAgent
       };
 
-      // optional: keep for debugging
-      try { localStorage.setItem("pending_lead_log", JSON.stringify(leadData)); } catch (e) {}
-
-      const payload = JSON.stringify(leadData);
-
-      // Primary: sendBeacon (non-blocking)
       try {
-        const blob = new Blob([payload], { type: "application/json" });
-        navigator.sendBeacon(N8N_LEADLOG_WEBHOOK, blob);
+        await fetch(N8N_LEADLOG_WEBHOOK, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(leadData)
+        });
       } catch (err) {
-        // Fallback: fetch keepalive
-        try {
-          fetch(N8N_LEADLOG_WEBHOOK, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: payload,
-            keepalive: true
-          }).catch(() => {});
-        } catch (e) {}
+        console.log("Lead log failed:", err);
       }
-    }, true);
 
-    // Example usage (not used on this page):
-    // const exampleTrack = buildTrackUrl(src, "social-system", "https://go.freebiebro.org/");
+      form.submit();
+    });
   </script>
 </body>
 </html>
