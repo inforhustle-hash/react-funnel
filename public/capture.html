@@ -1,188 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Get Instant Access</title>
-<style>
-  body {
-    <script>
-(function () {
-  const form = document.querySelector("form");
-  if (!form) return;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Instant Access</title>
 
-  form.addEventListener("submit", function () {
-    try {
-      const emailEl = form.querySelector('input[type="email"], input[name="email"]');
-      const nameEl  = form.querySelector('input[name="name"], input[name="fullname"], input[name="first_name"], input[type="text"]');
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #070a12 0%, #0b0f19 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-      const email = (emailEl && emailEl.value) ? emailEl.value.trim() : "";
-      const name  = (nameEl && nameEl.value) ? nameEl.value.trim() : "";
-
-      const src = new URLSearchParams(location.search).get("src")
-        || localStorage.getItem("funnel_src")
-        || "direct";
-
-      const payload = {
-        src, name, email,
-        source: "sendsteed",
-        listId: "125084",
-        url: location.pathname + location.search,
-        userAgent: navigator.userAgent
-      };
-
-      // IMPORTANT: replace with the Production URL shown in your n8n Webhook node
-      const WEBHOOK = "PASTE_YOUR_N8N_PRODUCTION_WEBHOOK_URL_HERE";
-
-      navigator.sendBeacon(
-        WEBHOOK,
-        new Blob([JSON.stringify(payload)], { type: "application/json" })
-      );
-    } catch (e) {}
-  }, true);
-})();
-</script>
-    
-    
-    
-    
-    
-    
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #070a12 0%, #0b0f19 100%);
-    color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .box {
-    width: 100%;
-    max-width: 520px;
-    background: #12182a;
-    border-radius: 18px;
-    padding: 34px 28px;
-    box-sizing: border-box;
-    text-align: center;
-    box-shadow: 0 0 40px rgba(0, 255, 204, 0.08);
-  }
-
-  .tag {
-    display: inline-block;
-    margin-bottom: 14px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(0, 255, 204, 0.1);
-    border: 1px solid rgba(0, 255, 204, 0.35);
-    color: #00ffcc;
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  h1 {
-    margin: 0 0 10px;
-    font-size: 34px;
-    line-height: 1.2;
-  }
-
-  .sub {
-    color: #b8c0d4;
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0 0 18px;
-  }
-
-  .bonus {
-    background: #0d1733;
-    border: 1px solid rgba(0, 255, 204, 0.2);
-    border-radius: 14px;
-    padding: 16px;
-    margin: 0 0 20px;
-    text-align: left;
-  }
-
-  .bonus strong {
-    color: #00ffcc;
-  }
-
-  .bonus p {
-    margin: 0;
-    color: #d4dbeb;
-    line-height: 1.5;
-    font-size: 15px;
-  }
-
-  .bullets {
-    text-align: left;
-    margin: 0 0 20px;
-    padding: 0;
-    list-style: none;
-  }
-
-  .bullets li {
-    margin-bottom: 10px;
-    color: #d7deed;
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  .bullets li span {
-    color: #00ffcc;
-    font-weight: 700;
-  }
-
-  input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 12px;
-    border: none;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-
-  button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background: #00ffcc;
-    color: #000000;
-    font-size: 17px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  button:hover {
-    opacity: 0.95;
-  }
-
-  button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-
-  .trust {
-    margin-top: 14px;
-    font-size: 12px;
-    color: #8a94a6;
-  }
-
-  @media (max-width: 600px) {
     .box {
-      padding: 28px 20px;
+      width: 100%;
+      max-width: 520px;
+      background: #12182a;
+      border-radius: 18px;
+      padding: 34px 28px;
+      box-sizing: border-box;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(0, 255, 204, 0.08);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0, 255, 204, 0.1);
+      border: 1px solid rgba(0, 255, 204, 0.35);
+      color: #00ffcc;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     h1 {
-      font-size: 28px;
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.2;
     }
-  }
-</style>
+
+    .sub {
+      color: #b8c0d4;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 18px;
+    }
+
+    .bonus {
+      background: #0d1733;
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      border-radius: 14px;
+      padding: 16px;
+      margin: 0 0 20px;
+      text-align: left;
+    }
+
+    .bonus strong {
+      color: #00ffcc;
+    }
+
+    .bonus p {
+      margin: 0;
+      color: #d4dbeb;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .bullets {
+      text-align: left;
+      margin: 0 0 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullets li {
+      margin-bottom: 10px;
+      color: #d7deed;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .bullets li span {
+      color: #00ffcc;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #00ffcc;
+      color: #000000;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .trust {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #8a94a6;
+    }
+
+    @media (max-width: 600px) {
+      .box { padding: 28px 20px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
 </head>
+
 <body>
   <div class="box">
     <div class="tag">FREE ACCESS + BONUS</div>
@@ -203,13 +158,17 @@
       <li><span>✓</span> No experience needed to start</li>
     </ul>
 
+    <!-- SendSteed submit (kept) -->
     <form id="leadForm" method="post" action="https://www.sendsteed.com/subscribe/">
       <input id="nameField" name="n120697" required type="text" placeholder="Enter your name" />
       <input id="emailField" name="e120697" required type="email" placeholder="Enter your best email" />
+
       <input type="hidden" name="lllid" value="120697" />
       <input type="hidden" name="lluid" value="theojm" />
+
       <input type="hidden" name="redirect" id="redirectField" value="https://go.freebiebro.org/thankyou.html" />
       <input type="hidden" name="source" id="sourceField" value="" />
+
       <button type="submit" id="submitBtn">Unlock Instant Access</button>
     </form>
 
@@ -217,8 +176,11 @@
   </div>
 
   <script>
+    // --- CONFIG: your n8n lead-log webhook (this is what fills LeadsLog + EmailFollowup)
+    const N8N_LEADLOG_WEBHOOK = "https://hooks.freebiebro.org/webhook/lead-log";
+
     const params = new URLSearchParams(window.location.search);
-    const src = params.get("src") || "direct";
+    const src = params.get("src") || localStorage.getItem("funnel_src") || "direct";
 
     const liveThankYouUrl = "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
 
@@ -237,8 +199,8 @@
 
       const leadData = {
         src: src,
-        name: document.getElementById("nameField").value.trim(),
-        email: document.getElementById("emailField").value.trim(),
+        name: (document.getElementById("nameField").value || "").trim(),
+        email: (document.getElementById("emailField").value || "").trim(),
         listId: "120697",
         source: "sendsteed",
         url: window.location.pathname + window.location.search,
@@ -246,18 +208,19 @@
         userAgent: navigator.userAgent
       };
 
-      localStorage.setItem("pending_lead_log", JSON.stringify(leadData));
-
-      const payload = JSON.stringify(leadData);
-      const webhookUrl = "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
+      try {
+        localStorage.setItem("pending_lead_log", JSON.stringify(leadData));
+      } catch (e) {}
 
       try {
+        const payload = JSON.stringify(leadData);
         const blob = new Blob([payload], { type: "application/json" });
-        navigator.sendBeacon(webhookUrl, blob);
+        navigator.sendBeacon(N8N_LEADLOG_WEBHOOK, blob);
       } catch (err) {
+        // Don’t block SendSteed even if logging fails
         console.error("Lead log failed", err);
       }
-    });
+    }, true);
   </script>
 </body>
 </html>
