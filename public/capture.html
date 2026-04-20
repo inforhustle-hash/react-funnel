@@ -6,6 +6,48 @@
 <title>Get Instant Access</title>
 <style>
   body {
+    <script>
+(function () {
+  const form = document.querySelector("form");
+  if (!form) return;
+
+  form.addEventListener("submit", function () {
+    try {
+      const emailEl = form.querySelector('input[type="email"], input[name="email"]');
+      const nameEl  = form.querySelector('input[name="name"], input[name="fullname"], input[name="first_name"], input[type="text"]');
+
+      const email = (emailEl && emailEl.value) ? emailEl.value.trim() : "";
+      const name  = (nameEl && nameEl.value) ? nameEl.value.trim() : "";
+
+      const src = new URLSearchParams(location.search).get("src")
+        || localStorage.getItem("funnel_src")
+        || "direct";
+
+      const payload = {
+        src, name, email,
+        source: "sendsteed",
+        listId: "125084",
+        url: location.pathname + location.search,
+        userAgent: navigator.userAgent
+      };
+
+      // IMPORTANT: replace with the Production URL shown in your n8n Webhook node
+      const WEBHOOK = "PASTE_YOUR_N8N_PRODUCTION_WEBHOOK_URL_HERE";
+
+      navigator.sendBeacon(
+        WEBHOOK,
+        new Blob([JSON.stringify(payload)], { type: "application/json" })
+      );
+    } catch (e) {}
+  }, true);
+})();
+</script>
+    
+    
+    
+    
+    
+    
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(180deg, #070a12 0%, #0b0f19 100%);
