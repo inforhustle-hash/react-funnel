@@ -64,7 +64,9 @@
       text-align: left;
     }
 
-    .bonus strong { color: #00ffcc; }
+    .bonus strong {
+      color: #00ffcc;
+    }
 
     .bonus p {
       margin: 0;
@@ -114,7 +116,9 @@
       cursor: pointer;
     }
 
-    button:hover { opacity: 0.95; }
+    button:hover {
+      opacity: 0.95;
+    }
 
     button:disabled {
       opacity: 0.7;
@@ -128,8 +132,13 @@
     }
 
     @media (max-width: 600px) {
-      .box { padding: 28px 20px; }
-      h1 { font-size: 28px; }
+      .box {
+        padding: 28px 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
@@ -195,8 +204,8 @@
 
       const leadData = {
         src: src,
-        name: document.getElementById("nameField").value.trim(),
-        email: document.getElementById("emailField").value.trim(),
+        name: (document.getElementById("nameField").value || "").trim(),
+        email: (document.getElementById("emailField").value || "").trim(),
         listId: "120697",
         source: "sendsteed",
         url: window.location.pathname + window.location.search,
@@ -205,15 +214,23 @@
       };
 
       try {
-        await fetch(N8N_LEADLOG_WEBHOOK, {
+        localStorage.setItem("pending_lead_log", JSON.stringify(leadData));
+      } catch (e) {}
+
+      try {
+        const response = await fetch(N8N_LEADLOG_WEBHOOK, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify(leadData)
         });
+
+        if (!response.ok) {
+          throw new Error("Lead log webhook returned status " + response.status);
+        }
       } catch (err) {
-        console.log("Lead log failed:", err);
+        console.error("Lead log failed:", err);
       }
 
       form.submit();
