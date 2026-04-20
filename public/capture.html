@@ -64,9 +64,7 @@
       text-align: left;
     }
 
-    .bonus strong {
-      color: #00ffcc;
-    }
+    .bonus strong { color: #00ffcc; }
 
     .bonus p {
       margin: 0;
@@ -116,9 +114,7 @@
       cursor: pointer;
     }
 
-    button:hover {
-      opacity: 0.95;
-    }
+    button:hover { opacity: 0.95; }
 
     button:disabled {
       opacity: 0.7;
@@ -158,7 +154,7 @@
       <li><span>✓</span> No experience needed to start</li>
     </ul>
 
-    <!-- SendSteed submit (kept) -->
+    <!-- SendSteed submit stays the same -->
     <form id="leadForm" method="post" action="https://www.sendsteed.com/subscribe/">
       <input id="nameField" name="n120697" required type="text" placeholder="Enter your name" />
       <input id="emailField" name="e120697" required type="email" placeholder="Enter your best email" />
@@ -176,16 +172,26 @@
   </div>
 
   <script>
-    // --- CONFIG: your n8n lead-log webhook (this is what fills LeadsLog + EmailFollowup)
-    const N8N_LEADLOG_WEBHOOK = "https://hooks.freebiebro.org/webhook/lead-log";
+    // HARD-SET WEBHOOKS (NO placeholders)
+    const N8N_LEADLOG_WEBHOOK = "https://n8n-production-01ac.up.railway.app/webhook/lead-log";
+    const N8N_TRACK_BASE = "https://n8n-production-01ac.up.railway.app/webhook/t";
+
+    // helper (matches: .../webhook/t?src=SOURCE&offer=OFFER&url=ENCODED_URL)
+    function buildTrackUrl(src, offer, url) {
+      return (
+        N8N_TRACK_BASE +
+        "?src=" + encodeURIComponent(src || "direct") +
+        "&offer=" + encodeURIComponent(offer || "offer") +
+        "&url=" + encodeURIComponent(url || "")
+      );
+    }
 
     const params = new URLSearchParams(window.location.search);
     const src = params.get("src") || localStorage.getItem("funnel_src") || "direct";
 
-    const liveThankYouUrl = "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
-
+    const thankYouUrl = "https://go.freebiebro.org/thankyou.html?src=" + encodeURIComponent(src);
     document.getElementById("sourceField").value = src;
-    document.getElementById("redirectField").value = liveThankYouUrl;
+    document.getElementById("redirectField").value = thankYouUrl;
     localStorage.setItem("funnel_src", src);
 
     let leadSent = false;
@@ -208,19 +214,30 @@
         userAgent: navigator.userAgent
       };
 
-      try {
-        localStorage.setItem("pending_lead_log", JSON.stringify(leadData));
-      } catch (e) {}
+      // optional: keep for debugging
+      try { localStorage.setItem("pending_lead_log", JSON.stringify(leadData)); } catch (e) {}
 
+      const payload = JSON.stringify(leadData);
+
+      // Primary: sendBeacon (non-blocking)
       try {
-        const payload = JSON.stringify(leadData);
         const blob = new Blob([payload], { type: "application/json" });
         navigator.sendBeacon(N8N_LEADLOG_WEBHOOK, blob);
       } catch (err) {
-        // Don’t block SendSteed even if logging fails
-        console.error("Lead log failed", err);
+        // Fallback: fetch keepalive
+        try {
+          fetch(N8N_LEADLOG_WEBHOOK, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: payload,
+            keepalive: true
+          }).catch(() => {});
+        } catch (e) {}
       }
     }, true);
+
+    // Example usage (not used on this page):
+    // const exampleTrack = buildTrackUrl(src, "social-system", "https://go.freebiebro.org/");
   </script>
 </body>
 </html>
