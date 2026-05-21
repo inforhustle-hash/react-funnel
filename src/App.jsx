@@ -194,7 +194,12 @@ export default function App() {
             <p className="trust">Instant access • No experience needed</p>
           </div>
         </div>
-
+<a
+  href="/business-automation.html"
+  className="inline-flex items-center justify-center rounded-xl bg-green-500 px-6 py-3 font-bold text-black shadow-lg hover:bg-green-400"
+>
+  Business Automation Setup
+</a>
         <div className="banner-row">
           <div className="banner-card">
             <a
