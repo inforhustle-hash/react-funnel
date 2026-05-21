@@ -18,6 +18,7 @@ export default function App() {
   const extraBannerFinalUrl = "https://rotatelinkpro.com/Theojm/moneymakertools/";
   const herculistFinalUrl = "http://www.herculist.com/members/index.cgi?Theojm";
   const imageGeneratorFinalUrl = "https://metallfya--irc.thrivecart.com/image-generator/";
+  const viralBannerzFinalUrl = "https://viralbannerz.com/?Theojm";
 
   const makeTrackUrl = (offer, url) =>
     `https://n8n-production-01ac.up.railway.app/webhook/t` +
@@ -44,6 +45,32 @@ export default function App() {
         <img src="/logo.png" alt="Logo" />
       </a>
 
+      <a
+        href={viralBannerzFinalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => trackClick("viralbannerz-top-banner", viralBannerzFinalUrl)}
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          zIndex: 20,
+          display: "block",
+        }}
+      >
+        <img
+          src="https://hosting.photobucket.com/9ade4d44-17f6-4a2a-94fd-326ab824118b/0ceffabf-22b3-4c0f-a341-3bdc4647fbf0.png"
+          alt="ViralBannerz"
+          style={{
+            maxWidth: "260px",
+            width: "100%",
+            borderRadius: "10px",
+            cursor: "pointer",
+            boxShadow: "0 10px 25px rgba(0,0,0,0.35)",
+          }}
+        />
+      </a>
+
       <div className="landing-container">
         <div className="hero-row">
           <div
@@ -58,7 +85,7 @@ export default function App() {
                 width="1335"
                 height="751"
                 src="https://www.youtube.com/embed/4a3KpSfA8Wk"
-                title="10 Done-For-You Systems That Make Money Online (No Building Needed)"
+                title="10 Done-For-You Systems That Make Money Online"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
@@ -75,12 +102,7 @@ export default function App() {
                 boxShadow: "0 14px 40px rgba(0,0,0,0.28)",
               }}
             >
-              <div
-                style={{
-                  textAlign: "center",
-                  marginBottom: "16px",
-                }}
-              >
+              <div style={{ textAlign: "center", marginBottom: "16px" }}>
                 <h2
                   style={{
                     fontSize: "2rem",
@@ -147,9 +169,6 @@ export default function App() {
               </div>
             </div>
           </div>
-<a href="https://viralbannerz.com/?Theojm" target="_blank">
-<img src="https://hosting.photobucket.com/9ade4d44-17f6-4a2a-94fd-326ab824118b/0ceffabf-22b3-4c0f-a341-3bdc4647fbf0.png" border="0">
-</a>
 
           <div className="hero-text">
             <h1>
