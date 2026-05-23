@@ -18,7 +18,7 @@ export default function App() {
   const extraBannerFinalUrl = "https://rotatelinkpro.com/Theojm/moneymakertools/";
   const herculistFinalUrl = "http://www.herculist.com/members/index.cgi?Theojm";
   const imageGeneratorFinalUrl = "https://metallfya--irc.thrivecart.com/image-generator/";
-  const businessAutomationUrl = "/business-automation.html";
+  const businessAutomationUrl = "/capture.html?src=business-automation";
   const viralBannerzFinalUrl = "https://viralbannerz.com/?Theojm";
 
   const makeTrackUrl = (offer, url) =>
