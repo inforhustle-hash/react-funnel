@@ -18,6 +18,7 @@ export default function App() {
   const extraBannerFinalUrl = "https://rotatelinkpro.com/Theojm/moneymakertools/";
   const herculistFinalUrl = "http://www.herculist.com/members/index.cgi?Theojm";
   const imageGeneratorFinalUrl = "https://metallfya--irc.thrivecart.com/image-generator/";
+  const businessAutomationUrl = "/business-automation.html";
   const viralBannerzFinalUrl = "https://viralbannerz.com/?Theojm";
 
   const makeTrackUrl = (offer, url) =>
@@ -73,13 +74,7 @@ export default function App() {
 
       <div className="landing-container">
         <div className="hero-row">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "28px",
-            }}
-          >
+          <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
             <div className="video-box">
               <iframe
                 width="1335"
@@ -157,6 +152,29 @@ export default function App() {
                   👉 Get This System for $47
                 </a>
 
+                <br />
+
+                <a
+                  href={businessAutomationUrl}
+                  onClick={() =>
+                    trackClick("business-automation-setup", businessAutomationUrl)
+                  }
+                  style={{
+                    display: "inline-block",
+                    marginTop: "14px",
+                    background: "linear-gradient(135deg, #22c55e, #86efac)",
+                    color: "#06120b",
+                    padding: "14px 28px",
+                    borderRadius: "12px",
+                    textDecoration: "none",
+                    fontWeight: "800",
+                    fontSize: "1rem",
+                    boxShadow: "0 12px 30px rgba(34, 197, 94, 0.25)",
+                  }}
+                >
+                  ⚙️ Business Automation Setup
+                </a>
+
                 <p
                   style={{
                     marginTop: "12px",
@@ -194,12 +212,7 @@ export default function App() {
             <p className="trust">Instant access • No experience needed</p>
           </div>
         </div>
-<a
-  href="/business-automation.html"
-  className="inline-flex items-center justify-center rounded-xl bg-green-500 px-6 py-3 font-bold text-black shadow-lg hover:bg-green-400"
->
-  Business Automation Setup
-</a>
+
         <div className="banner-row">
           <div className="banner-card">
             <a
