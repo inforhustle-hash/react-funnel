@@ -14,11 +14,12 @@ export default function App() {
   }, [src]);
 
   const ctaFinalUrl = `${window.location.origin}/capture.html?src=${encodeURIComponent(src)}`;
+  const businessAutomationFinalUrl = `${window.location.origin}/business-automation.html`;
+
   const bannerFinalUrl = "https://leadsleap.com/?r=theojm";
   const extraBannerFinalUrl = "https://rotatelinkpro.com/Theojm/moneymakertools/";
   const herculistFinalUrl = "http://www.herculist.com/members/index.cgi?Theojm";
   const imageGeneratorFinalUrl = "https://metallfya--irc.thrivecart.com/image-generator/";
-  const businessAutomationUrl = "/capture.html?src=business-automation";
   const viralBannerzFinalUrl = "https://viralbannerz.com/?Theojm";
 
   const makeTrackUrl = (offer, url) =>
@@ -74,7 +75,13 @@ export default function App() {
 
       <div className="landing-container">
         <div className="hero-row">
-          <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "28px",
+            }}
+          >
             <div className="video-box">
               <iframe
                 width="1335"
@@ -152,29 +159,6 @@ export default function App() {
                   👉 Get This System for $47
                 </a>
 
-                <br />
-
-                <a
-                  href={businessAutomationUrl}
-                  onClick={() =>
-                    trackClick("business-automation-setup", businessAutomationUrl)
-                  }
-                  style={{
-                    display: "inline-block",
-                    marginTop: "14px",
-                    background: "linear-gradient(135deg, #22c55e, #86efac)",
-                    color: "#06120b",
-                    padding: "14px 28px",
-                    borderRadius: "12px",
-                    textDecoration: "none",
-                    fontWeight: "800",
-                    fontSize: "1rem",
-                    boxShadow: "0 12px 30px rgba(34, 197, 94, 0.25)",
-                  }}
-                >
-                  ⚙️ Business Automation Setup
-                </a>
-
                 <p
                   style={{
                     marginTop: "12px",
@@ -210,6 +194,99 @@ export default function App() {
             </a>
 
             <p className="trust">Instant access • No experience needed</p>
+
+            <div
+              style={{
+                marginTop: "26px",
+                background: "rgba(15, 27, 45, 0.96)",
+                border: "1px solid rgba(56, 189, 248, 0.35)",
+                borderRadius: "18px",
+                padding: "20px",
+                boxShadow: "0 14px 40px rgba(0,0,0,0.3)",
+              }}
+            >
+              <h2
+                style={{
+                  color: "#fff",
+                  fontSize: "1.45rem",
+                  margin: "0 0 8px",
+                  lineHeight: "1.2",
+                }}
+              >
+                Need This Setup For Your Business?
+              </h2>
+
+              <p
+                style={{
+                  color: "#cdd8e3",
+                  fontSize: "0.98rem",
+                  margin: "0 0 16px",
+                }}
+              >
+                Enter your name and email to see the Business Lead Follow-Up
+                Automation setup.
+              </p>
+
+              <form method="post" action="https://www.sendsteed.com/subscribe/">
+                <input
+                  name="e126583"
+                  required
+                  type="email"
+                  placeholder="your@email.com"
+                  style={{
+                    width: "100%",
+                    padding: "13px 14px",
+                    marginBottom: "10px",
+                    borderRadius: "12px",
+                    border: "1px solid #1d314a",
+                    fontSize: "1rem",
+                    outline: "none",
+                  }}
+                />
+
+                <input
+                  name="n126583"
+                  required
+                  type="text"
+                  placeholder="Name"
+                  style={{
+                    width: "100%",
+                    padding: "13px 14px",
+                    marginBottom: "12px",
+                    borderRadius: "12px",
+                    border: "1px solid #1d314a",
+                    fontSize: "1rem",
+                    outline: "none",
+                  }}
+                />
+
+                <input type="hidden" name="lllid" value="126583" />
+                <input type="hidden" name="lluid" value="theojm" />
+                <input type="hidden" name="redirect" value={businessAutomationFinalUrl} />
+                <input type="hidden" name="source" value="business-automation" />
+
+                <button
+                  type="submit"
+                  onClick={() =>
+                    trackClick("business-automation-optin", businessAutomationFinalUrl)
+                  }
+                  style={{
+                    width: "100%",
+                    background: "linear-gradient(135deg, #00c2ff, #38bdf8)",
+                    color: "#081120",
+                    padding: "14px 28px",
+                    borderRadius: "12px",
+                    border: "none",
+                    cursor: "pointer",
+                    fontWeight: "800",
+                    fontSize: "1rem",
+                    boxShadow: "0 12px 30px rgba(0, 194, 255, 0.25)",
+                  }}
+                >
+                  ⚙️ Business Automation Setup
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
