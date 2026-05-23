@@ -76,6 +76,7 @@
       border: none;
       cursor: pointer;
       font-size: 16px;
+      text-align: center;
     }
 
     .btn-primary {
@@ -201,6 +202,9 @@
       padding: 26px;
       background: #ffffff;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .price-card.featured {
@@ -218,6 +222,7 @@
       font-weight: 900;
       font-size: 13px;
       margin-bottom: 10px;
+      width: fit-content;
     }
 
     .price {
@@ -225,6 +230,13 @@
       font-weight: 900;
       color: #10213f;
       margin: 12px 0;
+    }
+
+    .price-sub {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 14px;
+      font-weight: 700;
     }
 
     ul {
@@ -248,6 +260,14 @@
       color: #16a34a;
       font-weight: 900;
       margin-right: 10px;
+    }
+
+    .package-action {
+      margin-top: 22px;
+    }
+
+    .package-action .btn {
+      width: 100%;
     }
 
     .highlight {
@@ -289,6 +309,40 @@
       font-size: 17px;
       max-width: 760px;
       margin: 0 auto 18px;
+    }
+
+    .payment-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .payment-option {
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .payment-option h4 {
+      color: #0f172a;
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .payment-option .mini-price {
+      font-size: 30px;
+      font-weight: 900;
+      color: #1d4ed8;
+      margin-bottom: 12px;
+    }
+
+    .payment-option p {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 14px;
     }
 
     .small-note {
@@ -365,7 +419,8 @@
       .grid-2,
       .pricing,
       .flow,
-      .footer-grid {
+      .footer-grid,
+      .payment-options {
         grid-template-columns: 1fr;
       }
 
@@ -397,8 +452,8 @@
       </p>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="#payment">
-          Get Setup Started
+        <a class="btn btn-primary" href="#pricing">
+          Choose Your Package
         </a>
 
         <a class="btn btn-secondary" href="#how">
@@ -508,50 +563,77 @@
       </div>
     </section>
 
-    <section class="section">
-      <h2>Setup Packages</h2>
+    <section class="section" id="pricing">
+      <h2>Choose Your Setup Package</h2>
 
       <p class="section-intro">
-        Choose the setup level that fits your business.
+        Click the exact package you want below. Each package has its own PayPal button.
       </p>
 
       <div class="pricing">
         <div class="price-card">
-          <h3>Starter Setup</h3>
-          <div class="price">$297</div>
+          <div>
+            <h3>Starter Setup</h3>
+            <div class="price">$297</div>
+            <div class="price-sub">One-time setup payment</div>
 
-          <ul>
-            <li>Lead capture setup</li>
-            <li>Google Sheet lead log</li>
-            <li>Business owner email alert</li>
-            <li>Basic follow-up message</li>
-          </ul>
+            <ul>
+              <li>Lead capture setup</li>
+              <li>Google Sheet lead log</li>
+              <li>Business owner email alert</li>
+              <li>Basic follow-up message</li>
+            </ul>
+          </div>
+
+          <div class="package-action">
+            <a class="btn btn-paypal" href="PAYPAL_STARTER_SETUP_LINK_HERE">
+              Pay $297 For Starter
+            </a>
+          </div>
         </div>
 
         <div class="price-card featured">
-          <span class="tag">Recommended</span>
-          <h3>Standard Setup</h3>
-          <div class="price">$497</div>
+          <div>
+            <span class="tag">Recommended</span>
+            <h3>Standard Setup</h3>
+            <div class="price">$497</div>
+            <div class="price-sub">One-time setup payment</div>
 
-          <ul>
-            <li>Everything in Starter</li>
-            <li>3 to 7 day follow-up</li>
-            <li>Lead source tracking</li>
-            <li>Status updates</li>
-            <li>Full test run</li>
-          </ul>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>3 to 7 day follow-up</li>
+              <li>Lead source tracking</li>
+              <li>Status updates</li>
+              <li>Full test run</li>
+            </ul>
+          </div>
+
+          <div class="package-action">
+            <a class="btn btn-paypal" href="PAYPAL_STANDARD_SETUP_LINK_HERE">
+              Pay $497 For Standard
+            </a>
+          </div>
         </div>
 
         <div class="price-card">
-          <h3>Monthly Support</h3>
-          <div class="price">$97/mo</div>
+          <div>
+            <h3>Monthly Support</h3>
+            <div class="price">$97/mo</div>
+            <div class="price-sub">Monthly support payment</div>
 
-          <ul>
-            <li>Workflow checks</li>
-            <li>Small message edits</li>
-            <li>Link updates</li>
-            <li>Basic monthly report</li>
-          </ul>
+            <ul>
+              <li>Workflow checks</li>
+              <li>Small message edits</li>
+              <li>Link updates</li>
+              <li>Basic monthly report</li>
+            </ul>
+          </div>
+
+          <div class="package-action">
+            <a class="btn btn-paypal" href="PAYPAL_MONTHLY_SUPPORT_LINK_HERE">
+              Pay $97/mo For Support
+            </a>
+          </div>
         </div>
       </div>
 
@@ -564,27 +646,52 @@
 
     <section class="section" id="payment">
       <div class="payment-box">
-        <h3>Start Your Business Automation Setup</h3>
+        <h3>Pick The Exact Package You Want</h3>
 
         <p>
-          Click the PayPal button below to start your setup. After payment, send
-          your business name, website link, email address, lead form link, and
-          the message you want customers to receive.
+          Use the correct button below so your order matches the package you want.
+          After payment, send your business name, website link, email address,
+          lead form link, and the message you want customers to receive.
         </p>
 
-        <div class="cta-row">
-          <a class="btn btn-paypal" href="PAYPAL_PAYMENT_LINK_HERE">
-            Pay With PayPal
-          </a>
+        <div class="payment-options">
+          <div class="payment-option">
+            <h4>Starter Setup</h4>
+            <div class="mini-price">$297</div>
+            <p>Simple lead capture, sheet log, and owner alert.</p>
+            <a class="btn btn-paypal" href="PAYPAL_STARTER_SETUP_LINK_HERE">
+              Pay Starter
+            </a>
+          </div>
 
+          <div class="payment-option">
+            <h4>Standard Setup</h4>
+            <div class="mini-price">$497</div>
+            <p>Lead capture, tracking, and 3 to 7 day follow-up.</p>
+            <a class="btn btn-paypal" href="PAYPAL_STANDARD_SETUP_LINK_HERE">
+              Pay Standard
+            </a>
+          </div>
+
+          <div class="payment-option">
+            <h4>Monthly Support</h4>
+            <div class="mini-price">$97/mo</div>
+            <p>Workflow checks, small updates, and support.</p>
+            <a class="btn btn-paypal" href="PAYPAL_MONTHLY_SUPPORT_LINK_HERE">
+              Pay Monthly Support
+            </a>
+          </div>
+        </div>
+
+        <div class="cta-row">
           <a class="btn btn-dark" href="mailto:infor@freebiebro.org?subject=Business Automation Setup Question">
             Ask A Question First
           </a>
         </div>
 
         <p class="small-note">
-          PayPal payment link is being set up. Replace PAYPAL_PAYMENT_LINK_HERE
-          with your real PayPal checkout link when ready.
+          PayPal links are being set up. Replace each placeholder with the correct
+          PayPal checkout link for that package.
         </p>
       </div>
     </section>
@@ -682,12 +789,20 @@
       <h2>Ready To Stop Losing Leads?</h2>
 
       <p class="section-intro">
-        Get a business lead follow-up automation system set up for your business.
+        Choose the package that fits your business and start your automation setup.
       </p>
 
       <div class="cta-row">
-        <a class="btn btn-paypal" href="PAYPAL_PAYMENT_LINK_HERE">
-          Pay With PayPal
+        <a class="btn btn-paypal" href="PAYPAL_STARTER_SETUP_LINK_HERE">
+          Starter - $297
+        </a>
+
+        <a class="btn btn-paypal" href="PAYPAL_STANDARD_SETUP_LINK_HERE">
+          Standard - $497
+        </a>
+
+        <a class="btn btn-paypal" href="PAYPAL_MONTHLY_SUPPORT_LINK_HERE">
+          Support - $97/mo
         </a>
 
         <a class="btn btn-secondary" href="mailto:infor@freebiebro.org?subject=Business Automation Setup">
@@ -723,7 +838,7 @@
           <h3>Contact</h3>
           <p>Email: <a href="mailto:infor@freebiebro.org">infor@freebiebro.org</a></p>
           <p>Website: <a href="https://go.freebiebro.org/">go.freebiebro.org</a></p>
-          <p><a href="#payment">Start Setup</a></p>
+          <p><a href="#pricing">Choose Package</a></p>
         </div>
       </div>
 
