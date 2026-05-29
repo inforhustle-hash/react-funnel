@@ -6,7 +6,8 @@ const [hoverMain, setHoverMain] = useState(false);const [hoverExtra, setHoverExt
 
 useEffect(() => {localStorage.setItem("funnel_src", src);}, [src]);
 
-const ctaFinalUrl = ${window.location.origin}/capture.html?src=${encodeURIComponent(src)};const businessAutomationFinalUrl = ${window.location.origin}/business-automation.html;
+const ctaFinalUrl = `${window.location.origin}/capture.html?src=${encodeURIComponent(src)}`;
+const businessAutomationFinalUrl = `${window.location.origin}/business-automation.html`;
 
 const bannerFinalUrl = "https://leadsleap.com/?r=theojm";const extraBannerFinalUrl = "https://rotatelinkpro.com/Theojm/moneymakertools/";const herculistFinalUrl = "http://www.herculist.com/members/index.cgi?Theojm";const imageGeneratorFinalUrl = "https://metallfya--irc.thrivecart.com/image-generator/";const viralBannerzFinalUrl = "https://viralbannerz.com/?Theojm";
 
