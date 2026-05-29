@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intent-Driven Content Optimizer | Free Traffic Tool</title>
+
+<meta name="description" content="Use the free Intent-Driven Content Optimizer to improve search intent alignment, boost organic traffic, improve content relevance, and increase conversion rates." />
+<meta name="keywords" content="search intent optimization, content strategy alignment, boost organic traffic, improve content relevance, increase conversion rates, intent-driven content" />
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8fafc;
+  color: #111827;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.hero {
+  background: linear-gradient(135deg, #07111f, #123f8c, #0f766e);
+  color: #ffffff;
+  padding: 78px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: #dbeafe;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.05;
+  margin: 0 0 20px;
+}
+
+.hero p {
+  max-width: 860px;
+  margin: 0 auto 28px;
+  font-size: 20px;
+  color: #e0f2fe;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 16px 28px;
+  font-weight: 900;
+  font-size: 17px;
+  transition: 0.2s ease;
+}
+
+.btn-green {
+  background: #22c55e;
+  color: #06120a;
+}
+
+.btn-white {
+  background: #ffffff;
+  color: #123f8c;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+}
+
+.section {
+  padding: 66px 20px;
+}
+
+.section.white {
+  background: #ffffff;
+}
+
+.section.dark {
+  background: #07111f;
+  color: #ffffff;
+}
+
+.section.soft {
+  background: #f8fafc;
+}
+
+.section h2 {
+  font-size: clamp(30px, 4vw, 42px);
+  margin: 0 0 14px;
+  line-height: 1.15;
+}
+
+.section-intro {
+  font-size: 18px;
+  max-width: 780px;
+  color: #475569;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.dark .section-intro {
+  color: #cbd5e1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.06);
+}
+
+.dark .card {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: none;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.card p {
+  margin: 0;
+  color: #475569;
+}
+
+.dark .card p {
+  color: #dbeafe;
+}
+
+.info-box {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 14px 34px rgba(15,23,42,0.08);
+}
+
+.info-box p {
+  margin: 0 0 14px;
+}
+
+.keyword-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.keyword-card {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #1e1b4b;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.keyword-card strong {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4338ca;
+  margin-bottom: 6px;
+}
+
+.tool-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.tool-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(15,23,42,0.12);
+  overflow: hidden;
+}
+
+.tool-header {
+  padding: 30px 26px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+}
+
+.tool-header .mini-badge {
+  display: inline-block;
+  color: #4f46e5;
+  background: rgba(79, 70, 229, 0.1);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.tool-header h2 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 38px);
+}
+
+.tool-header p {
+  margin: 0 auto;
+  max-width: 570px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.tool-form {
+  padding: 24px;
+}
+
+.field-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 14px;
+  background: #f8fafc;
+  margin-bottom: 12px;
+}
+
+.field-card label {
+  display: block;
+  font-size: 13px;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 7px;
+}
+
+.field-card input {
+  width: 100%;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  padding: 13px;
+  font-size: 15px;
+  outline: none;
+}
+
+.field-card input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+
+.tool-submit {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-weight: 900;
+  font-size: 16px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(79,70,229,0.25);
+  margin-top: 10px;
+}
+
+.results {
+  display: none;
+  padding: 24px;
+  background: #fafafa;
+  border-top: 1px solid #e2e8f0;
+}
+
+.results.show {
+  display: block;
+}
+
+.score-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.score-head strong {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.score-head span {
+  color: #64748b;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.score-meter {
+  height: 10px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+  margin: 16px 0 20px;
+}
+
+.score-meter i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  transition: width 0.5s ease;
+}
+
+.metric {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+
+.metric small {
+  display: block;
+  color: #64748b;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.metric strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 24px;
+}
+
+.metric p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.strategy-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.strategy-card strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.optin-box {
+  max-width: 620px;
+  margin: 34px auto 0;
+  background: #07111f;
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 0 20px 48px rgba(15,23,42,0.25);
+}
+
+.optin-box h2 {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 4vw, 38px);
+}
+
+.optin-box p {
+  color: #cbd5e1;
+  margin: 0 0 20px;
+  font-size: 16px;
+}
+
+.optin-box input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 13px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.optin-box button {
+  width: 100%;
+  background: #22c55e;
+  color: #06120a;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.small-note {
+  font-size: 13px !important;
+  color: #94a3b8 !important;
+  margin-top: 14px !important;
+}
+
+.cta-panel {
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  color: #ffffff;
+  padding: 42px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 20px 48px rgba(15,23,42,0.25);
+}
+
+.cta-panel p {
+  max-width: 760px;
+  margin: 0 auto 24px;
+  color: #dbeafe;
+  font-size: 18px;
+}
+
+.footer {
+  background: #020617;
+  color: #cbd5e1;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .grid,
+  .keyword-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-panel {
+    padding: 30px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+  <section class="hero">
+    <div class="container">
+      <div class="badge">Free Traffic Tool</div>
+
+      <h1>Intent-Driven Content Optimizer</h1>
+
+      <p>
+        Use this free tool to align your content with search intent, improve relevance,
+        boost organic traffic, and increase conversion opportunities.
+      </p>
+
+      <div class="btn-row">
+        <a href="#free-tool" class="btn btn-green">Use The Free Tool</a>
+        <a href="#business-optin" class="btn btn-white">See Business Automation Setup</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="container">
+      <div style="text-align:center;">
+        <h2>Blueprint: Intent-Driven Content Optimizer</h2>
+        <p class="section-intro">
+          This landing page is built around a free traffic tool that helps visitors understand content intent,
+          improve their strategy, and then introduces your paid Business Lead Follow-Up Automation setup.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <p>
+          <strong>Purpose:</strong> The Intent-Driven Content Optimizer helps digital marketers and content creators
+          align their content strategy with user search intent. By understanding and leveraging search intent,
+          businesses can improve content relevance, increase organic traffic, and drive higher engagement.
+        </p>
+
+        <p>
+          <strong>Inputs:</strong> Primary keyword, target audience profile, current content URL,
+          competitor content URL, and desired content outcome.
+        </p>
+
+        <p>
+          <strong>Logic:</strong> The tool analyzes user input to identify search intent signals,
+          compares them against existing content, and gives a simple opportunity score with content improvement guidance.
+        </p>
+
+        <p>
+          <strong>Monetization:</strong> This free tool captures interest, builds trust, and introduces visitors
+          to your paid Business Lead Follow-Up Automation setup.
+        </p>
+
+        <div class="keyword-row">
+          <div class="keyword-card">
+            <strong>Target Keyword</strong>
+            search intent optimization
+          </div>
+
+          <div class="keyword-card">
+            <strong>Niche / Topic</strong>
+            Traffic
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" id="free-tool">
+    <div class="container">
+      <div style="text-align:center;">
+        <h2>Use The Free Tool</h2>
+        <p class="section-intro">
+          Fill in the fields below and generate a simple content optimization score.
+          This is the freebie. The business automation setup is a paid service shown after the tool.
+        </p>
+      </div>
+
+      <div class="tool-wrap">
+        <div class="tool-box">
+
+          <div class="tool-header">
+            <span class="mini-badge">AI Business Intelligence</span>
+            <h2>Intent-Driven Content Optimizer</h2>
+            <p>
+              Check your keyword, audience, content URL, competitor URL, and desired outcome.
+            </p>
+          </div>
+
+          <form id="optimizer-form" class="tool-form" onsubmit="return runOptimizer(event);">
+            <div class="field-card">
+              <label for="field_0">Primary keyword</label>
+              <input id="field_0" type="text" placeholder="Example: search intent optimization" required>
+            </div>
+
+            <div class="field-card">
+              <label for="field_1">Target audience profile</label>
+              <input id="field_1" type="text" placeholder="Example: small business owners, bloggers, affiliate marketers" required>
+            </div>
+
+            <div class="field-card">
+              <label for="field_2">Current content URL</label>
+              <input id="field_2" type="text" placeholder="Example: https://yourwebsite.com/page" required>
+            </div>
+
+            <div class="field-card">
+              <label for="field_3">Competitor content URL</label>
+              <input id="field_3" type="text" placeholder="Example: https://competitor.com/page" required>
+            </div>
+
+            <div class="field-card">
+              <label for="field_4">Desired content outcome</label>
+              <input id="field_4" type="text" placeholder="Example: boost organic traffic and increase conversions" required>
+            </div>
+
+            <button class="tool-submit" type="submit">
+              Optimize Your Content Strategy →
+            </button>
+          </form>
+
+          <div class="results" id="tool-results">
+            <div class="score-head">
+              <strong id="score-label">90</strong>
+              <span>Opportunity Index</span>
+            </div>
+
+            <div class="score-meter">
+              <i id="score-meter"></i>
+            </div>
+
+            <div class="metric">
+              <small>Opportunity Index</small>
+              <strong id="metric-0">90</strong>
+              <p>Weighted blend across your keyword, audience, URLs, and desired outcome.</p>
+            </div>
+
+            <div class="metric">
+              <small>Execution Readiness</small>
+              <strong id="metric-1">59%</strong>
+              <p>How complete and actionable your content optimization inputs are.</p>
+            </div>
+
+            <div class="metric">
+              <small>Monetization Leverage</small>
+              <strong id="metric-2">56%</strong>
+              <p>How much your content can support traffic, leads, and conversion goals.</p>
+            </div>
+
+            <div class="strategy-card">
+              <strong>Phase 1: Improve Intent Match</strong>
+              Make sure the title, opening paragraph, and call-to-action match what the visitor is really searching for.
+            </div>
+
+            <div class="strategy-card">
+              <strong>Phase 2: Add Lead Capture</strong>
+              Add a simple opt-in or next step so visitors do not leave without joining your list.
+            </div>
+
+            <div class="strategy-card">
+              <strong>Phase 3: Follow Up Automatically</strong>
+              Use automation to follow up with leads instead of hoping they buy or respond on the first visit.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="optin-box" id="business-optin">
+        <h2>Want This Type Of Automation For Your Business?</h2>
+
+        <p>
+          Enter your information below to see how the Business Lead Follow-Up Automation
+          setup works and review the available setup packages.
+        </p>
+
+        <form method="post" action="https://www.sendsteed.com/subscribe/">
+
+          <input type="hidden" name="lllid" value="126583">
+          <input type="hidden" name="lluid" value="theojm">
+          <input type="hidden" name="source" value="business-automation">
+          <input type="hidden" name="redirect" value="https://go.freebiebro.org/business-automation.html">
+
+          <input type="text" name="n126583" placeholder="Enter your first name" required>
+
+          <input type="email" name="e126583" placeholder="Enter your best email" required>
+
+          <button type="submit">
+            Show Me The Business Automation Setup →
+          </button>
+
+        </form>
+
+        <p class="small-note">
+          We respect your privacy. You can unsubscribe anytime.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div style="text-align:center;">
+        <h2>What This Free Tool Helps You Understand</h2>
+        <p class="section-intro">
+          The tool is free. It helps show why content, traffic, lead capture, and follow-up should work together.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Search Intent</h3>
+          <p>
+            Check if your content matches what people are actually looking for when they search.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Traffic Potential</h3>
+          <p>
+            See whether your content has room to attract better visitors and improve organic traffic.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Follow-Up Need</h3>
+          <p>
+            Understand why sending traffic without lead capture and follow-up can leave money behind.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="container">
+      <div class="cta-panel">
+        <h2>Ready To Stop Losing Leads?</h2>
+
+        <p>
+          The free tool helps you see the traffic and content side. The paid Business Lead Follow-Up Automation setup
+          helps you capture leads, track them, alert the business owner, and follow up automatically.
+        </p>
+
+        <div class="btn-row">
+          <a href="#business-optin" class="btn btn-green">Show Me The Business Automation Setup</a>
+          <a href="https://go.freebiebro.org/business-automation.html" class="btn btn-white">View Packages</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      © 2026 FreebieBro Business Automation · Traffic
+      <br>
+      Contact:
+      <a href="mailto:contact@freebiebro.org">contact@freebiebro.org</a>
+      · Website:
+      <a href="https://go.freebiebro.org/">go.freebiebro.org</a>
+    </p>
+
+    <p style="max-width:820px; margin:16px auto 0; color:#94a3b8;">
+      Disclaimer: The content optimizer is a free informational tool. Business automation setup is a paid service.
+      Results depend on your business, offer, traffic quality, response time, and follow-up process.
+    </p>
+  </footer>
+
+</div>
+
+<script>
+function hashText(text) {
+  var h = 0;
+  for (var i = 0; i < text.length; i++) {
+    h = (Math.imul(31, h) + text.charCodeAt(i)) | 0;
+  }
+  return Math.abs(h);
+}
+
+function clamp(num, min, max) {
+  return Math.max(min, Math.min(max, num));
+}
+
+function runOptimizer(event) {
+  event.preventDefault();
+
+  var keyword = document.getElementById("field_0").value.trim();
+  var audience = document.getElementById("field_1").value.trim();
+  var currentUrl = document.getElementById("field_2").value.trim();
+  var competitorUrl = document.getElementById("field_3").value.trim();
+  var outcome = document.getElementById("field_4").value.trim();
+
+  var payload = keyword + "|" + audience + "|" + currentUrl + "|" + competitorUrl + "|" + outcome;
+  var seed = hashText(payload);
+
+  var completeness = 0;
+  if (keyword.length > 3) completeness += 20;
+  if (audience.length > 5) completeness += 20;
+  if (currentUrl.indexOf("http") === 0) completeness += 20;
+  if (competitorUrl.indexOf("http") === 0) completeness += 20;
+  if (outcome.length > 5) completeness += 20;
+
+  var opportunity = clamp(58 + (seed % 37), 56, 95);
+  var readiness = clamp(completeness, 30, 100);
+  var monetization = clamp(48 + (seed % 45), 40, 94);
+
+  document.getElementById("score-label").textContent = opportunity;
+  document.getElementById("score-meter").style.width = opportunity + "%";
+  document.getElementById("metric-0").textContent = opportunity;
+  document.getElementById("metric-1").textContent = readiness + "%";
+  document.getElementById("metric-2").textContent = monetization + "%";
+
+  var results = document.getElementById("tool-results");
+  results.classList.add("show");
+  results.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  return false;
+}
+</script>
+
+</body>
+</html>
