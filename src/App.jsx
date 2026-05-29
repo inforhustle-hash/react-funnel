@@ -1,4 +1,4 @@
-import "./App.css";
+﻿import "./App.css";
 import { useEffect, useState } from "react";
 
 export default function App() {
@@ -536,7 +536,7 @@ onClick={() => trackClick("main-cta", ctaFinalUrl)}
                     boxShadow: "0 12px 30px rgba(0, 194, 255, 0.25)",
                   }}
                 >
-                  👉 Get This System for $47
+                  ðŸ‘‰ Get This System for $47
                 </a>
 
                 <p
@@ -546,7 +546,7 @@ onClick={() => trackClick("main-cta", ctaFinalUrl)}
                     fontSize: "0.95rem",
                   }}
                 >
-                  Personal use • One-time payment • Instant access
+                  Personal use â€¢ One-time payment â€¢ Instant access
                 </p>
               </div>
             </div>
@@ -563,17 +563,17 @@ onClick={() => trackClick("main-cta", ctaFinalUrl)}
               Choose the system you want. Watch the demo. Start using it today.
             </p>
 
-            <div className="bonus">🎁 Free Bonus Included</div>
+            <div className="bonus">ðŸŽ Free Bonus Included</div>
 
             <a
               className="cta"
               href={ctaFinalUrl}
               onClick={() => trackClick("main-cta", ctaFinalUrl)}
             >
-              ➤ Get Your First AI System Now
+              âž¤ Get Your First AI System Now
             </a>
 
-            <p className="trust">Instant access • No experience needed</p>
+            <p className="trust">Instant access â€¢ No experience needed</p>
 
             <div
               style={{
@@ -663,7 +663,7 @@ onClick={() => trackClick("main-cta", ctaFinalUrl)}
                     boxShadow: "0 12px 30px rgba(0, 194, 255, 0.25)",
                   }}
                 >
-                  ⚙️ Business Automation Setup
+                  âš™ï¸ Business Automation Setup
                 </button>
               </form>
             </div>
@@ -690,7 +690,7 @@ onClick={() => trackClick("main-cta", ctaFinalUrl)}
                 }}
               />
             </a>
-            <p>👆 Click the banner above</p>
+            <p>ðŸ‘† Click the banner above</p>
           </div>
 
           <div className="banner-card">
@@ -712,7 +712,7 @@ onClick={() => trackClick("main-cta", ctaFinalUrl)}
                 }}
               />
             </a>
-            <p>👆 Click the banner above</p>
+            <p>ðŸ‘† Click the banner above</p>
           </div>
 
           <div className="banner-card">
@@ -734,7 +734,7 @@ onClick={() => trackClick("main-cta", ctaFinalUrl)}
                 }}
               />
             </a>
-            <p>👆 Click the banner above</p>
+            <p>ðŸ‘† Click the banner above</p>
           </div>
         </div>
       </div>
